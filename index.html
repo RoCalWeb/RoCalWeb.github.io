@@ -1,0 +1,1570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Ragnarok Online Stats Calculator- R版素質計算機</title>
+<meta name="description" content="台版RO仙境傳說角色素質分配、攻速計算、素質變詠模擬計算機">
+<meta http-equiv="Content-Language" content="zh-tw">
+<meta name="keywords" content="RO, TWRO, 台版,仙境傳說, 素質計算, 攻速計算, ASPD, 素質模擬, 配點, 185">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/layout.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+<script type="text/javascript" src="js/Array.js"></script>
+<script type="text/javascript" src="js/cal.js"></script>
+<script type="text/javascript" src="js/Cookie.js"></script>
+<script type="text/javascript" src="js/panel.js"></script>
+</head>
+
+<body id="main">
+<div class="bg-white BgImg d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm text-white">
+ <h5 class="my-0 mr-md-auto font-weight-normal ">Ragnarok Online Stats Calculator</h5> 
+ <nav class="my-2 my-md-0 mr-md-3">
+ <a id="Link_RoIndex"  class="p-2 text-light mouse">首頁 </a>
+ <a id="Link_SaveData" class="p-2 text-light mouse">存檔 </a>
+ <a id="Link_RoQuestion"  class="p-2 text-light mouse" >Q&A </a>
+ <a id="Link_RoAbout" class="p-2 text-light mouse">About</a>
+ </nav>
+ </div>
+<div class="container">
+  <div id="RoIndex">
+<form name="RoForm">
+    	<div class="card mb-4 shadow-sm bg-white">
+            <div class="card-body">
+              <div class="form-row">
+                  <label class="col-auto col-form-label ml-3" >分類</label>
+                <div class="col-lg-2">
+                  <select class="form-control form-control-sm my-1 mr-sm-2" id="RoClass"></select>
+                  </div>
+                <label class="col-auto col-form-label ml-3">職業</label>
+                <div class="col-lg-2">
+                  <select class="form-control form-control-sm my-1 mr-sm-2 " id="RoJob"></select></div>
+                <div class="col-lg-auto">
+                  <select class="form-control form-control-sm my-1 mr-sm-2 " id="SpecialList"></select></div>
+                <label class="col-auto col-form-label ml-3">等級</label>
+                <div class="col-lg-2"><select class="form-control form-control-sm my-1 mr-sm-2 " id="LvBase"></select>
+                </div>
+            
+              <div class="col-auto ml-3 ">
+                <div class="custom-control custom-checkbox my-2 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="LvAuto" name="LvAuto" value="0" >
+                    <label class="custom-control-label" for="LvAuto">LV auto</label>
+                    </div></div>
+              <div class="col-auto">
+                      <div class="custom-control custom-checkbox my-2 mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="JobMax" value="0" >
+                          <label id="Job_Max_Lv" class="custom-control-label" for="JobMax"></label>
+              </div></div>
+                
+              </div>
+            </div>
+          </div>
+	<div class="row">
+    <div class="col-md-12 "><div class="card bg-white mb-4 shadow-sm">
+          <div class="card-header "> <div class="row"><div class="col-2 align-self-start">素質 </div>
+          <div class="col-9"><div id="Header_Value" style="display: none;">
+            S:<span id="Collapse_STR" class="mr-1 mr-md-4"></span>
+            A:<span id="Collapse_AGI" class="mr-1 mr-md-4"></span>
+            V:<span id="Collapse_VIT" class="mr-1 mr-md-4"></span>
+            I:<span id="Collapse_INT" class="mr-1 mr-md-4"></span>
+            D:<span id="Collapse_DEX" class="mr-1 mr-md-4"></span>
+            L:<span id="Collapse_LUK" class="mr-1 mr-md-4"></span>
+            </div></div>
+          <div class="col-1">
+          <div class="collapse_switch float-right">
+                      <input type="checkbox" class="collapse_switch-checkbox" id="collapse_switch">
+                      <label class="collapse_switch-label" for="collapse_switch">
+                          <span class="collapse_switch-inner"></span>
+                         
+                      </label>
+                  </div>
+          </div>
+        </div>
+        </div>
+        	<div id="Body_Value" class="card-body">
+            <div class="row">
+            <div class="col-xl-5">                
+                <div class="form-row mb-1">
+
+                  <label class=" ml-3 col-sm-2 col-form-label"  >STR</label>
+
+                  <div class="col-4">
+                  <select class="form-control form-control-sm my-1 mr-sm-3" id="Quality_STR"></select>
+                  </div>
+                    <label class="my-1 ml-1" >+</label>
+                    <label class="my-1 ml-1" id="Other_STR"  style="min-width:26px; text-align: center;">0</label>
+                    <label class="my-1 ml-1" >+</label>
+                    <div class="col">
+                      <input type="text" class="form-control my-1 form-control-sm Class_AddValueInput" placeholder="0" id="Add_STR" value="0" >
+                    </div>
+
+                    </div>
+                <div class="form-row">
+
+                      <label class=" ml-3 col-sm-2 col-form-label"  >AGI</label>
+    
+                      <div class="col-4">
+                      <select class="form-control form-control-sm my-1 mr-sm-3" id="Quality_AGI"></select>
+                      </div>
+                      <label class="my-1 ml-1" >+</label>
+                      <label class="my-1 ml-1" id="Other_AGI"  style="min-width:26px; text-align: center;">0</label>
+                      <label class="my-1 ml-1" >+</label>
+                        <div class="col">
+                          <input type="text" class="form-control my-1 form-control-sm Class_AddValueInput" placeholder="0"  id="Add_AGI" value="0">
+                        </div>
+    
+                    </div>
+                <div class="form-row mb-1">
+
+                          <label class="  ml-3 col-sm-2 col-form-label" >VIT </label>
+        
+                          <div class="col-4">
+                          <select class="form-control form-control-sm my-1 mr-sm-3" id="Quality_VIT"></select>
+                          </div>
+                          <label class="my-1 ml-1" >+</label>
+                          <label class="my-1 ml-1"  id="Other_VIT"  style="min-width:26px; text-align: center;">0</label>
+                          <label class="my-1 ml-1" >+</label>
+                            <div class="col">
+                              <input type="text" class="form-control my-1 form-control-sm Class_AddValueInput" placeholder="0" id="Add_VIT" value="0">
+                            </div>
+        
+                    </div>
+                <div class="form-row mb-1">
+
+                              <label class=" ml-3 col-sm-2 col-form-label" >INT</label>
+            
+                              <div class="col-4">
+                              <select class="form-control form-control-sm my-1 mr-sm-3"  id="Quality_INT" ></select>
+                              </div>
+                              <label class="my-1 ml-1" >+</label>
+                              <label class="my-1 ml-1" id="Other_INT" style="min-width:26px; text-align: center;">0</label>
+                              <label class="my-1 ml-1" >+</label>
+                                <div class="col">
+                                  <input type="text" class="form-control my-1 form-control-sm Class_AddValueInput" placeholder="0" id="Add_INT" value="0">
+                                </div>
+            
+                    </div>
+                <div class="form-row mb-1">
+
+                                  <label class=" ml-3 col-sm-2 col-form-label" >DEX</label>
+                
+                                  <div class="col-4">
+                                  <select class="form-control form-control-sm my-1 mr-sm-3"  id="Quality_DEX" ></select>
+                                  </div>
+                                  <label class="my-1 ml-1" >+</label>
+                                  <label class="my-1 ml-1"  id="Other_DEX"  style="min-width:26px; text-align: center;">0</label>
+                                  <label class="my-1 ml-1" >+</label>
+                                    <div class="col">
+                                      <input type="text" class="form-control my-1 form-control-sm Class_AddValueInput" placeholder="0" id="Add_DEX" value="0" >
+                                    </div>
+                
+                    </div>
+                <div class="form-row mb-1">
+
+                                      <label class="ml-3 col-sm-2 col-form-label" >LUK</label>
+                    
+                                      <div class="col-4">
+                                      <select class="form-control form-control-sm my-1 mr-sm-3" id="Quality_LUK"></select>
+                                      </div>
+                                      <label class="my-1 ml-1" >+</label>
+                                      <label class="my-1 ml-1" id="Other_LUK"  style="min-width:26px; text-align: center;">0</label>
+                                      <label class="my-1 ml-1" >+</label>
+                                        <div class="col">
+                                          <input type="text" class="form-control my-1 form-control-sm Class_AddValueInput" placeholder="0" id="Add_LUK" value="0" >
+                                        </div>
+                    
+                    </div>    
+            </div>
+            <div class="col-xl-7">
+            <table class="table table-borderless mt-3 mt-xl-0">
+  <thead>
+    <tr class="border-bottom">
+      <td class="text-muted">前Atk</td>
+      <th class="w-25" id="Quality_ATK"></th>
+      <td class="text-muted">前Def</td>
+      <th class="w-25" id="Quality_DEF"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-bottom">
+      <td class="text-muted">前Matk</td>
+      <th id="Quality_MATK"></th>
+      <td class="text-muted">(Mdef</td>
+      <th id="Quality_MDEF"></th>
+    </tr>
+    <tr class="border-bottom">
+      <td class="text-muted">命中率Hit</td>
+      <th><span id="Quality_HIT"></span><span>+</span><span id="Add_HIT"></span></th>
+      <td class="text-muted">迴避率Flee</td>
+      <th id="Quality_FLEE"></th>
+    </tr>
+    <tr class="border-bottom">
+      <td class="text-muted">暴擊率Cri</td>
+      <th id="Quality_CRI"></th>
+      <td class="text-muted">完全迴避</td>
+      <th  id="Quality_LUKFlee"></th>
+    </tr>
+    <tr>
+      <td class="text-muted">剩餘點數</td>
+      <th colspan="2"  id="RestPoint"></th>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+            </div></div>
+        </div></div>
+  </div>
+    
+    <div class="row"> 
+      <div class="col-xl-12 "><div class="card bg-white mb-3 shadow-sm">
+        <div class="card-header "> <div class="row"><div class="col-2 align-self-start">攻速 </div>
+        <div class="col-9"><div id="Header_Aspd"  style="display: none;">
+          ASPD:<span id="Collapse_Aspd" class=" mr-4"></span>
+          每秒 <span id="Collapse_Real_Aspd"></span>下
+        </div></div>
+        <div class="col-1">
+          <div class="collapse_switch float-right">
+                      <input type="checkbox" class="collapse_switch-checkbox" id="collapse_switch2">
+                      <label class="collapse_switch-label" for="collapse_switch2">
+                          <span class="collapse_switch-inner"></span>
+                         
+                      </label>
+                  </div>
+          </div>
+        </div>
+        </div>
+        	<div class="card-body" id="Body_Aspd">
+            <div class="row ">
+              <div class="col-xl-2">
+                <div class="form-row ">
+                  <div class="input-group col-xl-12 mb-3">
+                    <div class="input-group-prepend">
+                      <label class="mr-3">右手</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded" id="RightHand"></select>
+                    <label></label>
+                  </div>
+                </div>
+                  <div class="form-row ">
+                    <div class="input-group col-xl-12  mb-3">
+                      <div class="input-group-prepend">
+                        <label class="mr-3">左手</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded" id="LeftHand"></select>
+                      <label></label>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col-xl-3 border-left">
+                <div class="form-row ">
+                  <div class="input-group  input-group-sm col-xl-12 mb-3">
+                    <div class="input-group-prepend">
+                      <label>裝備攻速 +</label>
+                      <span class="mx-2 " id="Equipment_ASPD">0</span>
+                      <label class="mr-2 ">% +</label>
+                    </div>
+                    <input type="text" class="form-control rounded" id="Add_Equipment_ASPD" value="0" >
+                    <div class="input-group-append">
+                      <label class="ml-2">%</label>
+                    </div>
+                  </div></div>
+                  <div class="form-row ">
+                    <div class="input-group  input-group-sm col-xl-12 mb-3">
+                      <div class="input-group-prepend">
+                        <label class="">技能攻速 +</label>
+                        <span class="mx-2 " id="Skill_ASPD">0</span>
+                        <label class="mr-2">% +</label>
+                      </div>
+                      <input type="text" class="form-control rounded" id="Add_Skill_ASPD" value="0" >
+                      <div class="input-group-append">
+                        <label class="ml-2">%</label>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+            
+                  <div class="col-xl-3 border-left">
+                  <div class="form-row">
+                    <div class="input-group  input-group-sm col-xl-12 mb-3">
+                      <div class="input-group-prepend">
+                        <label >ASPD</label>
+                        <label class="ml-4">&nbsp;+&nbsp;</label>
+                        <span class="mx-2 "  id="ASPD_Num">0</span>
+                        <label class="mr-2 ml-3">+</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded" id="Add_ASPD_Num"></select>
+                      <div class="input-group-append">
+                        <label class="ml-2"></label>
+                      </div>
+                    </div></div>
+                    <div class="form-row">
+                    <div class="input-group  input-group-sm col-xl-12 mb-3">
+                      <div class="input-group-prepend">
+                        <label class="mr-2">攻速藥水</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded" id="RoASPDPotion"></select>
+                      <div class="input-group-append">
+                        <label class="ml-2"></label>
+                      </div>
+                    </div>
+              </div>
+              </div>
+
+              <div class="col-xl-2 border-left"> 
+  <div class="form-row mb-4 mt-1"> 
+    <div class="col input-group  input-group-sm">
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="ASPD_Potion2_juice" name="ASPD_Potion2" value="10">
+            <label class="custom-control-label" for="ASPD_Potion2_juice">攻速濃縮汁</label>
+        </div></div>
+        
+      </div>
+          <div class="form-row mb-3">
+            <div class="col input-group  input-group-sm">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ASPD_Potion2_other" name="ASPD_Potion2">
+                    <label class="custom-control-label" for="ASPD_Potion2_other">其他</label>
+                </div>                    
+                <input type="text" class="form-control form-control-sm rounded ml-1" id="Add_Other_ASPD" value="0">
+                <div class="input-group-append">
+                  <label class="ml-2">%</label>
+                </div></div>
+              
+              </div>
+
+              </div>
+              <div class="col-xl-2 border-left"> 
+                <div class="form-row mb-1 mt-1"> 
+                  <div class="col input-group  input-group-sm">
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="ASPD_Potion3" name="ASPD_Potion3" value="10">
+                          <label class="custom-control-label" for="ASPD_Potion3">魔幻香水</label>
+                      </div></div>
+                      
+                    </div>
+                    <div id="Div_Runes" class="form-row mt-3" style="display: none;"> 
+                      <div class="col input-group  input-group-sm">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="RunesStone" name="RunesStone_checkbox" >
+                              <label class="custom-control-label" for="RunesStone">Asir盧恩石</label>
+                          </div>
+                          <spna class="ml-3 mr-1 my-1" style="font-size: 14px;">盧恩精熟：</spna> 
+                          <select class="form-control form-control-sm rounded" id="RunesStone_Lv">
+                            
+                          </select>
+                        </div>
+                          
+                        </div>
+                       
+              
+                            </div>
+        </div>
+
+                  <div style=" box-shadow:rgba(0,0,0,0.1) 0px 0px 5px 0px inset;  " class="form-row mb-2 mt-3 rounded bg-light">
+                    <div class="col-sm-4 input-group-append mt-2">
+                      <label class="ml-2">ASPD：</label> <strong><span id="Final_ASPD"></span></strong>
+                    </div>
+                    <div class="col-sm-4 input-group-append mt-2">
+                      <label class="ml-2">每秒攻擊：</label>  <strong><span id="Real_ASPD"></span></strong><label class="ml-2">下</label>
+                    </div>
+                    <div class="col-md-4 input-group-append mt-2">
+                      <label class="ml-2">備註：</label><span id="Remarks"></span>
+                    </div>
+                   </div>
+              </div>
+
+        </div></div>     
+      </div>
+      <div class="row"> 
+		<div class="col-xl-12"><div class="card bg-white mb-4 shadow-sm">
+      <div class="card-header "> <div class="row"><div class="col-4 col-md-2 align-self-start">技能施放速度 </div>
+      <div class="col-7 col-md-9"><div id="Header_SkillASPD"  style="display: none;"><div class="row">
+        <div class="col-auto">
+        詠唱:<span id="Collapse_Total_Spell"></span><span class="mr-2 mr-md-4">秒</span>
+        延遲:<span id="Collapse_Delay_And_Cooldown"></span><span class="">秒</span>
+        </div>
+        <div class="col">
+        每秒:<span id="Collapse_DPS"></span>次
+      </div> </div></div></div>
+        <div class="col-1"> <div class="collapse_switch float-right">
+                    <input type="checkbox" class="collapse_switch-checkbox" id="collapse_switch3">
+                    <label class="collapse_switch-label" for="collapse_switch3">
+                        <span class="collapse_switch-inner"></span>
+                       
+                    </label>
+                </div>
+        </div>
+      </div>
+      </div>
+        <div id="Body_SkillASPD" class="card-body">
+          <div class="form-row mb-3 my-2">
+            <div class="col-xl-6 input-group  input-group-sm">
+            <div class=" custom-control custom-radio custom-control-inline">
+              <input type="radio" id="c1" name="Radio_Skill" class="custom-control-input" value="List">
+              <label class="custom-control-label" for="c1">技能</label>
+            </div>             
+            <select class="form-control form-control-sm rounded ml-2" id="SkillList"></select>
+
+            </div>
+            <div class="col-xl-6 input-group  input-group-sm">
+              <div class="input-group-append">
+                <label class="ml-2 ">固詠</label>
+                <span id="Skill_Fixed" class="mx-1 "></span>
+                <label>秒 + 變詠</label>
+                <span id="Skill_Reduction" class="mx-1"></span>
+                <label>秒 + 共同研遲</label>
+                <span id="Skill_Delay" class="mx-1"></span>
+                <label>秒 + 獨立研遲</label>
+                <span id="Skill_Cooldown" class="mx-1"></span>
+                <label class=" ">秒</label>
+                </div>
+            </div>
+          </div>
+            <div class="form-row my-3">
+            <div class="col-md-6 input-group  input-group-sm">
+            <div class=" custom-control custom-radio custom-control-inline mt-1 ">
+              <input type="radio" id="c2" name="Radio_Skill" class="custom-control-input" value="Custom"  >
+              <label class="custom-control-label" for="c2">自訂</label>
+              </div>
+                <div class="input-group-append">
+                  <label class="ml-2 mt-1">固詠</label>
+                  </div>
+                <input id="Custom_Fixed" type="text" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                <div class="input-group-append">
+                  <label class="ml-2 mt-1">秒 +</label>
+                  </div>
+                  <div class="input-group-append">
+                  <label class="ml-2 mt-1">變詠</label>
+                  </div>
+                <input id="Custon_Reduction" type="text" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                <div class="input-group-append">
+                  <label class="ml-2 mt-1">秒 +</label>
+                  </div>
+              </div>
+              
+                
+              <div class="col-md-6 input-group  input-group-sm ml-4 ml-md-0">
+                <div class="input-group-append">
+                  <label class="ml-2 mt-1">共同延遲</label>
+                  </div>
+                <input id="Custom_Delay" type="text" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                <div class="input-group-append">
+                  <label class="ml-2 mt-1">秒 +</label>
+                  </div>
+                  <div class="input-group-append">
+                    <label class="ml-2 mt-1">獨立延遲</label>
+                    </div>
+                  <input id="Custom_Cooldown" type="text" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                  <div class="input-group-append">
+                    <label class="ml-2 mt-1">秒</label>
+                    </div>
+              </div>
+        
+          </div>
+          <div class="row ">
+            <div class="col-xl-6">
+                <div class="card bg-white my-3">
+                  <div class="card-header "> <div class="row">
+                    <div class="col-auto align-self-start">變詠</div>
+                    <div class="col-10 pl-0">
+                      <span id="Header_s_Reduction"></span><span class="ml-2 mr-md-4">秒</span>
+                      </div></div></div>
+                  <div class="card-body">
+                    <div class="form-row mb-4">
+                      <div class="col-md-5 input-group  input-group-sm mt-2 ml-2">
+                        <label>素質變詠減少</label> 
+                        <input name="Base_VCT" type="text" class="form-control rounded text-center ml-1" value="" disabled>
+                        <label class="ml-1 mr-2">%</label>
+                        
+                      </div>
+                      <div class="col-md-6 input-group  input-group-sm mt-2 ml-2">
+                    
+                        <label class="ml-2">缺</label> 
+                        <input name="Spell_Dex" type="text" class="form-control rounded text-center ml-1" value="" disabled>
+                        <label class="ml-1">DEX 或</label>
+                        <input name="Spell_Int" type="text" class="form-control rounded text-center ml-1" value="" disabled>
+                        <label class="ml-1">INT</label>
+                      </div>
+                    </div>
+
+                    <div class="form-row   border-top mb-4">
+                      <div class=" col-md-5 ml-2 mt-4 mr-md-4">
+                          <div class="input-group  input-group-sm">
+                        <div class="input-group-prepend">
+                          <label>裝備變詠減少</label>
+                        </div>
+                        <input type="text" id="Reduction_Equipment" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                        <div class="input-group-append">
+                          <label class="ml-2 ">%</label>
+                        </div>
+                      </div>
+                      <div class="col-3 input-group  input-group-sm px-1">              
+                        </div>
+                        
+                      </div>
+                      <div class="input-group  input-group-sm col-md-5 ml-2 ml-md-4 mt-4">
+                        <div class="input-group-prepend">
+                          <label>變詠秒數減少</label>
+                        </div>
+                        <input type="text" id="Reduction_Sec" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                        <div class="input-group-append">
+                          <label class="ml-2">秒</label>
+                        </div>
+                      </div>
+                    </div>
+
+             <div class="form-row  border-top ">
+            <div class=" col-md-5 mt-4 mb-3 ml-2 mr-md-4">
+            <div class="input-group  input-group-sm">
+              <div class="input-group-prepend">
+                <label>技能1</label>
+              </div>
+              <input type="text" id="Reduction_Skill1" class="form-control rounded ml-1 Class_SpellInput" value="0">
+              <div class="input-group-append">
+                <label class="ml-2 ">%</label>
+              </div>
+            </div>
+            </div>
+            <div class="input-group  input-group-sm col-md-5  mt-md-4 mb-3 ml-2 ml-md-4">
+              <div class="input-group-prepend">
+                <label>技能2</label>
+              </div>
+              <input type="text" id="Reduction_Skill2" class="form-control rounded ml-1 Class_SpellInput" value="0" >
+              <div class="input-group-append">
+                <label class="ml-2">%</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mt-md-2">
+            <div class=" col-md-5 mb-3 ml-2 mr-md-4">
+            <div class="input-group  input-group-sm">
+              <div class="input-group-prepend">
+                <label>技能3</label>
+              </div>
+              <input type="text" id="Reduction_Skill3" class="form-control rounded ml-1 Class_SpellInput" value="0" >
+              <div class="input-group-append">
+                <label class="ml-2 ">%</label>
+              </div>
+            </div>
+            </div>
+            <div class="input-group  input-group-sm col-md-5 mb-3 ml-2 ml-md-4">
+              <div class="input-group-prepend">
+                <label>技能4</label>
+              </div>
+              <input type="text" id="Reduction_Skill4" class="form-control rounded ml-1 Class_SpellInput" value="0">
+              <div class="input-group-append">
+                <label class="ml-2">%</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mt-sm-3 mb-sm-3">
+            <div class="col-sm-4 input-group  input-group-sm ">
+              <div class="input-group-append ml-2 mt-1">
+                <span id="SkillReduction_Name_1"></span><span id="SkillReduction_Value_1"></span><span>%</span>
+              </div>
+          </div>
+          <div class="col-sm-4 input-group  input-group-sm ">
+            <div class="input-group-append ml-2 mt-1">
+              <span id="SkillReduction_Name_2"></span><span id="SkillReduction_Value_2"></span><span>%</span>
+            </div>
+        </div>
+        <div class="col-sm-4 input-group  input-group-sm ">
+          <div class="input-group-append ml-2 mt-1">
+            <span id="SkillReduction_Name_3"></span><span id="SkillReduction_Value_3"></span><span>%</span>
+          </div>
+      </div>
+                  </div>
+                  <div class="form-row mb-sm-1">
+                   
+                          </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <div class="card bg-white my-3">
+              <div class="card-header "> <div class="row">
+                <div class="col-auto align-self-start">固詠</div>
+                <div class="col-10 pl-0">
+                  <span id="Header_s_Fixed"></span><span class="ml-2 mr-md-4">秒</span>
+                  </div></div></div>
+              <div class="card-body">
+                <div class="form-row ">
+                  <div class=" col-md-5 mb-3 ml-2 mr-md-4">
+                  <div class="input-group  input-group-sm">
+                    <div class="input-group-prepend">
+                      <label>百分比減少</label>
+                    </div>
+                    <input type="text" id="Fixed_Percentage" class="form-control rounded ml-1 Class_SpellInput" value="0" >
+                    <div class="input-group-append">
+                      <label class="ml-2 ">%</label>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="input-group  input-group-sm col-md-5 mb-3 ml-2 ml-md-4">
+                    <div class="input-group-prepend">
+                      <label>秒數減少</label>
+                    </div>
+                    <input type="text" id="Fixed_Sec" class="form-control rounded ml-1 Class_SpellInput" value="0" >
+                    <div class="input-group-append">
+                      <label class="ml-2">秒</label>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+                  <div class="col-sm-3 input-group  input-group-sm ">
+                    <div class="input-group-append ml-2 ">
+                      <span id="SkillFixed_Name"></span><span id="SkillFixed_Value"></span><span>%</span>
+                      
+                    </div>
+                </div>
+                <div class="col-sm-8 input-group  input-group-sm ">
+                  <div style="font-size: 14px;" class="input-group-append ml-2">
+                    <label>備註：</label>
+                    <span>固詠百分比只取最大值，無法疊加</span>
+                  </div>
+              </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="card bg-white my-3">
+                  <div class="card-header "> <div class="row">
+                    <div class="col-2 align-self-start">延遲</div>
+                    <div class="col-5 pl-0">
+                     <span class="text-secondary">共延</span><span id="Header_s_Delay" class="ml-2"></span><span class="ml-2 mr-md-4">秒</span>
+                     </div><div class="col-5 pl-0">
+                     <span class="text-secondary">獨延</span><span id="Header_s_Cooldown" class="ml-2"></span><span class="ml-2">秒</span>
+                      </div></div></div>
+                  <div class="card-body">
+                      <div class="form-row">
+                      <div class=" col-md-5 mb-3 mb-3 ml-2 mr-md-4 ">
+                      <div class="input-group  input-group-sm">
+                        <div class="input-group-prepend">
+                          <label>共同延遲減少</label>
+                        </div>
+                        <input type="text" id="Delay_Percentage" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                        <div class="input-group-append">
+                          <label class="ml-2 ">%</label>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="input-group  input-group-sm col-md-5 mb-3 mb-3 ml-2 ml-md-4">
+                        <div class="input-group-prepend">
+                          <label>共同延遲減少</label>
+                        </div>
+                        <input type="text" id="Delay_Sec" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                        <div class="input-group-append">
+                          <label class="ml-2">秒</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row mb-4">
+                      <div class="col-12 input-group  input-group-sm ">
+                        <div class="input-group-append ml-2">
+                          <span id="DelaySkill_Name"></span><span id="DelaySkill_Value"></span><span>%</span>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="form-row  border-top">
+                      <div class=" col-md-5 mt-4 ml-2 mr-md-4">
+                      <div class="input-group  input-group-sm">
+                        <div class="input-group-prepend">
+                          <label>獨立延遲減少</label>
+                        </div>
+                        <input type="text" id="Cooldown_Percentage" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                        <div class="input-group-append">
+                          <label class="ml-2 ">%</label>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="input-group  input-group-sm col-md-5 mt-4 ml-2 ml-md-4">
+                        <div class="input-group-prepend">
+                          <label>獨立延遲減少</label>
+                        </div>
+                        <input type="text" id="Cooldown_Sec" class="form-control rounded ml-1 Class_SpellInput" value="0">
+                        <div class="input-group-append">
+                          <label class="ml-2">秒</label>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+          </div>
+
+          
+          <div style=" box-shadow:rgba(0,0,0,0.1) 0px 0px 5px 0px inset;  "  class="form-row mb-3 rounded bg-light mt-2">
+            <div class="col-md-4 input-group  input-group-sm my-2">
+              <label class="ml-2">詠唱時間</label> <span id="Total_Spell" class="ml-1"></span><label class="ml-2">秒</label>
+            </div>
+            <div class="col-md-4 input-group  input-group-sm  my-2">
+              <label class="ml-2">延遲時間</label> <span id="Delay_And_Cooldown" class="ml-1"></span><label class="ml-2">秒</label>
+            </div>
+            <div class="col-md-4 input-group  input-group-sm  my-2">
+              <label class="ml-2">每秒可施放技能</label> <span id="DPS" class="ml-1"></span><label class="ml-2">次</label>
+            </div>
+          </div>
+          
+</div>
+
+        </div>
+        </div></div>
+        <div class="row">
+          <div class="col-md-12 "><div class="card bg-white mb-4 shadow-sm">
+            <div class="card-header "> <div class="row"><div class="col-auto align-self-start">輔助技能 </div>
+            <div class="col-8 mx-auto"><div class="row text-danger">
+                <div id="Skill_Conflict1" class="col-md-3"><small class="font-weight-bold">天賜與慈悲術衝突</small></div>
+                <div id="Skill_Conflict2" class="col-md-3"><small class="font-weight-bold">加速術與純白百合花衝突</small></div>
+                <div id="Skill_Conflict3" class="col-md-3"><small class="font-weight-bold">布萊奇與刺客的黃昏衝突</small></div>
+                <div id="Skill_Conflict4" class="col-md-3"><small class="font-weight-bold">精靈靈魂與影子靈魂衝突</small></div>
+            </div>
+              <div id="Header_Skill"  style="display: none;"></div>
+              </div>
+            
+            <div class="col-1"><div class="collapse_switch float-right">
+                          <input type="checkbox" class="collapse_switch-checkbox" id="collapse_switch4" >
+                          <label class="collapse_switch-label" for="collapse_switch4">
+                              <span class="collapse_switch-inner"></span>
+                          </label>
+              </div></div>
+            </div>
+            </div>
+                <div id="Body_Skill" class="card-body">
+                  <div class="row">
+                  <div class="col-xl-4 ">
+                <div class="form-row mb-1 mt-2 ml-2">
+                <div class="col-2 mt-3 ">
+                <div class="onoffswitch">
+                  <input type="checkbox" name="a1" class="onoffswitch-checkbox Class_Skill_A" id="a1">
+                  <label class="onoffswitch-label" for="a1">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label></div>
+                </div>
+                <div class="input-group my-1 mb-2 col-4">
+                  <div class="input-group-prepend">
+                    <label class="mt-1 mr-2">慈悲術</label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-5">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2 text-muted">主教Job</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded Class_Skill_B" id="b1" disabled >
+                    </select>
+                    <label></label>
+                  </div>
+              </div>
+              <div class="form-row mb-1 mt-2 ml-2">
+                <div class="col-2 mt-3 ">
+                <div class="onoffswitch">
+                  <input type="checkbox" name="a2" class="onoffswitch-checkbox Class_Skill_A " id="a2" >
+                  <label class="onoffswitch-label" for="a2">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label></div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">純白百合花</label>
+                    </div></div>
+                  <div class="input-group my-1 mb-2 col-5">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2 text-muted">主教Job</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded Class_Skill_B" id="b2" disabled >
+                    </select>
+                    <label></label>
+                  </div>
+                </div>
+      
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a03" class="onoffswitch-checkbox Class_Skill_A " id="a3">
+                      <label class="onoffswitch-label" for="a3">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">天使之賜福</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B"  id="b3" disabled >
+                        <option value="1,0,0,1,1,0,2,0,0,0,0,0,0,0,0">1</option>
+                        <option value="2,0,0,2,2,0,4,0,0,0,0,0,0,0,0">2</option>
+                        <option value="3,0,0,3,3,0,6,0,0,0,0,0,0,0,0">3</option>
+                        <option value="4,0,0,4,4,0,8,0,0,0,0,0,0,0,0">4</option>
+                        <option value="5,0,0,5,5,0,10,0,0,0,0,0,0,0,0">5</option>
+                        <option value="6,0,0,6,6,0,12,0,0,0,0,0,0,0,0">6</option>
+                        <option value="7,0,0,7,7,0,14,0,0,0,0,0,0,0,0">7</option>
+                        <option value="8,0,0,8,8,0,16,0,0,0,0,0,0,0,0">8</option>
+                        <option value="9,0,0,9,9,0,18,0,0,0,0,0,0,0,0">9</option>
+                        <option value="10,0,0,10,10,0,20,0,0,0,0,0,0,0,0" selected>10</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+      
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a4" class="onoffswitch-checkbox Class_Skill_A " id="a4">
+                      <label class="onoffswitch-label" for="a4">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">加速術</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class=" mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b4" disabled>
+                        <option value="0,3,0,0,0,0,0,1,0,0,0,0,0,0,0">1</option>
+                        <option value="0,4,0,0,0,0,0,2,0,0,0,0,0,0,0">2</option>
+                        <option value="0,5,0,0,0,0,0,3,0,0,0,0,0,0,0">3</option>
+                        <option value="0,6,0,0,0,0,0,4,0,0,0,0,0,0,0">4</option>
+                        <option value="0,7,0,0,0,0,0,5,0,0,0,0,0,0,0">5</option>
+                        <option value="0,8,0,0,0,0,0,6,0,0,0,0,0,0,0">6</option>
+                        <option value="0,9,0,0,0,0,0,7,0,0,0,0,0,0,0">7</option>
+                        <option value="0,10,0,0,0,0,0,8,0,0,0,0,0,0,0">8</option>
+                        <option value="0,11,0,0,0,0,0,9,0,0,0,0,0,0,0">9</option>
+                        <option value="0,12,0,0,0,0,0,10,0,0,0,0,0,0,0" selected>10</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a5" class="onoffswitch-checkbox Class_Skill_A" id="a5">
+                      <label class="onoffswitch-label" for="a5">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">聖典</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class=" mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b5" disabled >
+                        <option value="0,0,0,0,0,0,0,0,0,10,0,0,0,0,0">1</option>
+                        <option value="0,0,0,0,0,0,0,0,0,20,0,0,0,0,0">2</option>
+                        <option value="0,0,0,0,0,0,0,0,0,30,0,0,0,0,0">3</option>
+                        <option value="0,0,0,0,0,0,0,0,0,40,0,0,0,0,0">4</option>
+                        <option value="0,0,0,0,0,0,0,0,0,50,0,0,0,0,0" selected>5</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+                
+              </div>
+
+              <div class="col-xl-4 border-left">
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a6" class="onoffswitch-checkbox Class_Skill_A " id="a6" >
+                      <label class="onoffswitch-label" for="a6">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">犧牲祈福</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class=" mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b6" disabled>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,10,0,0">1</option>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,15,0,0">2</option>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,20,0,0" selected>3</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+                <div class="form-row mb-1 mt-2 ml-2">
+                <div class="col-2 mt-3 ">
+                <div class="onoffswitch">
+                  <input type="checkbox" name="a7" class="onoffswitch-checkbox Class_Skill_A " id="a7" >
+                  <label class="onoffswitch-label" for="a7">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label></div>
+                </div>
+                <div class="input-group my-1 mb-2 col-4">
+                  <div class="input-group-prepend">
+                    <label class="mt-1 mr-2">心神凝聚</label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-5">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded Class_Skill_B" id="b7" disabled>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">1</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">2</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">3</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">4</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">5</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">6</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">7</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">8</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">9</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" selected>10</option>
+                    
+                    </select>
+                    <label></label>
+                  </div>
+              </div>
+              <div class="form-row mb-1 mt-2 ml-2">
+                <div class="col-2 mt-3 ">
+                <div class="onoffswitch">
+                  <input type="checkbox" name="a8" class="onoffswitch-checkbox Class_Skill_A " id="a8">
+                  <label class="onoffswitch-label" for="a8">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label></div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">布萊奇之詩</label>
+                    </div></div>
+                  <div class="input-group my-1 mb-2 col-5">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded Class_Skill_B" id="b8" disabled>
+                      <option value="0,0,0,0,0,0,0,0,0,0,3,2,0,0,0">1</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,6,4,0,0,0">2</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,9,6,0,0,0">3</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,12,8,0,0,0">4</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,15,10,0,0,0">5</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,18,12,0,0,0">6</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,21,14,0,0,0">7</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,24,16,0,0,0">8</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,27,18,0,0,0">9</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,30,20,0,0,0" selected>10</option>
+                    </select>
+                    <label></label>
+                  </div>
+                </div>
+      
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a9" class="onoffswitch-checkbox Class_Skill_A" id="a9">
+                      <label class="onoffswitch-label" for="a9">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">刺客的黃昏</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b9" disabled>
+                        <option value="0,0,0,0,0,0,0,0,1,0,0,0,0,0,0">1</option>
+                        <option value="0,0,0,0,0,0,0,0,3,0,0,0,0,0,0">2</option>
+                        <option value="0,0,0,0,0,0,0,0,5,0,0,0,0,0,0">3</option>
+                        <option value="0,0,0,0,0,0,0,0,7,0,0,0,0,0,0">4</option>
+                        <option value="0,0,0,0,0,0,0,0,9,0,0,0,0,0,0">5</option>
+                        <option value="0,0,0,0,0,0,0,0,11,0,0,0,0,0,0">6</option>
+                        <option value="0,0,0,0,0,0,0,0,13,0,0,0,0,0,0">7</option>
+                        <option value="0,0,0,0,0,0,0,0,15,0,0,0,0,0,0">8</option>
+                        <option value="0,0,0,0,0,0,0,0,17,0,0,0,0,0,0">9</option>
+                        <option value="0,0,0,0,0,0,0,0,20,0,0,0,0,0,0" selected>10</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+      
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a10" class="onoffswitch-checkbox Class_Skill_A" id="a10" >
+                      <label class="onoffswitch-label" for="a10">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">搖擺舞</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class=" mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b10" disabled>
+                        <option value="0,0,0,0,0,0,0,0,4,0,0,0,0,0,0">1</option>
+                        <option value="0,0,0,0,0,0,0,0,8,0,0,0,0,0,0">2</option>
+                        <option value="0,0,0,0,0,0,0,0,12,0,0,0,0,0,0">3</option>
+                        <option value="0,0,0,0,0,0,0,0,16,0,0,0,0,0,0">4</option>
+                        <option value="0,0,0,0,0,0,0,0,20,0,0,0,0,0,0" selected>5</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+               
+                
+              </div>
+
+              <div class="col-xl-4 border-left">
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a11" class="onoffswitch-checkbox Class_Skill_A" id="a11">
+                      <label class="onoffswitch-label" for="a11">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">捲甲蟲暴衝</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class=" mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b11" disabled>
+                        <option value="0,20,0,0,0,0,0,0,0,0,0,0,0,0,0">1</option>
+                        <option value="0,25,0,0,0,0,0,0,0,0,0,0,0,0,0">2</option>
+                        <option value="0,30,0,0,0,0,0,0,0,0,0,0,0,0,0">3</option>
+                        <option value="0,35,0,0,0,0,0,0,0,0,0,0,0,0,0">4</option>
+                        <option value="0,40,0,0,0,0,0,0,0,0,0,0,0,0,0" selected>5</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+                <div class="form-row mb-1 mt-2 ml-2">
+                <div class="col-2 mt-3 ">
+                <div class="onoffswitch">
+                  <input type="checkbox" name="a12" class="onoffswitch-checkbox Class_Skill_A" id="a12">
+                  <label class="onoffswitch-label" for="a12">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label></div>
+                </div>
+                <div class="input-group my-1 mb-2 col-4">
+                  <div class="input-group-prepend">
+                    <label class="mt-1 mr-2">速度激發</label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-5">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded Class_Skill_B" id="b12" disabled>
+                      <option value="0,0,0,0,0,0,0,10,30,0,0,0,0,0,0">5</option>
+                    </select>
+                    <label></label>
+                  </div>
+              </div>
+              <div class="form-row mb-1 mt-2 ml-2">
+                <div class="col-2 mt-3 ">
+                <div class="onoffswitch">
+                  <input type="checkbox" name="a13" class="onoffswitch-checkbox Class_Skill_A" id="a13">
+                  <label class="onoffswitch-label" for="a13">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label></div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">精靈靈魂</label>
+                    </div></div>
+                  <div class="input-group my-1 mb-2 col-5">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                    </div>
+                    <select class="form-control form-control-sm rounded Class_Skill_B" id="b13" disabled>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,5,0">1</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,5,0">2</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,7,0">3</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,7,0">4</option>
+                      <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,10,0" selected>5</option>
+                    </select>
+                    <label></label>
+                  </div>
+                </div>
+      
+                <div class="form-row mb-1 mt-2 ml-2">
+                  <div class="col-2 mt-3 ">
+                    <div class="onoffswitch">
+                      <input type="checkbox" name="a14" class="onoffswitch-checkbox Class_Skill_A" id="a14">
+                      <label class="onoffswitch-label" for="a14">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                      </label>
+                  </div></div>
+                  <div class="input-group my-1 mb-2 col-4">
+                    <div class="input-group-prepend">
+                      <label class="mt-1 mr-2">影子靈魂</label>
+                    </div></div>
+                    <div class="input-group my-1 mb-2 col-5">
+                      <div class="input-group-prepend">
+                        <label class="mt-1 mr-3 text-muted">Skill LV</label>
+                      </div>
+                      <select class="form-control form-control-sm rounded Class_Skill_B" id="b14" disabled>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,1">1</option>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,1">2</option>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,2">3</option>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,2">4</option>
+                        <option value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,3" selected>5</option>
+                      </select>
+                      <label></label>
+                    </div>
+                </div>
+               
+              </div>
+
+              </div>
+            </div>
+                </div>
+              </div></div>
+</form>
+  </div>
+<div id="SaveData"  style="display:none">
+  <div class="row">
+    <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header">存檔</div>
+      <div class="card-body">
+        <form class="needs-validation" novalidate>
+        <div class="row">
+        <div class="col-auto mb-3 pr-0">
+            <label class="ml-2">存檔名稱：</label>
+        </div>
+        <div class="col col-md-3 input-group  input-group-sm mb-3 pl-1">
+          <input type="text" id="Cookie_Name" class="form-control rounded ml-1" value=""  maxlength="10" required>
+          <div class="invalid-feedback ">名稱不可空白</div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </form>
+        <div class="row">
+          <div class="input-group input-group-sm col-md-5 mb-3">
+            <div class="input-group-append"><label class="ml-2">存檔資料：</label></div>
+              <div class="input-group-append"><span id="SaveData_Now"></span></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group input-group-sm  col-md-5">
+              <button type="button" id="btn_SetCookie" class="btn btn-info ml-2">儲存</button>
+              <button type="button" id="btn_CreateUrl" class="btn btn-info ml-2" >產生網址</button>
+              <input type="text" id="URL" class="form-control rounded ml-2 mt-1">
+            </div>
+          </div>
+         
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header">存檔列表</div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">名稱</th>
+              <th scope="col">角色資料</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col">連結網址</th>
+            </tr>
+          </thead>
+          <tbody class="Class_tbody">
+            <tr class="Class_tr "> 
+              <th scope="row align-middle" style="vertical-align:middle !important">1</th>
+              <td id="Cookie_List_Name" class="Cookie_List_Name">11</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button" class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary  ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr">
+              <th scope="row">2</th>
+              <td class="Cookie_List_Name">22</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button" class="btn btn-info  ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary  ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+                        </tr>
+            <tr class="Class_tr">
+              <th scope="row">3</th>
+              <td class="Cookie_List_Name">33</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr">
+              <th scope="row">4</th>
+              <td class="Cookie_List_Name">44</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr">
+              <th scope="row">5</th>
+              <td class="Cookie_List_Name">55</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr" >
+              <th  scope="row">6</th>
+              <td class="Cookie_List_Name">66</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr" >
+              <th   scope="row">7</th>
+              <td class="Cookie_List_Name">77</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr" >
+              <th   scope="row">8</th>
+              <td class="Cookie_List_Name">88</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr" >
+              <th scope="row">9</th>
+              <td class="Cookie_List_Name">99</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info  ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+            <tr class="Class_tr" >
+              <th scope="row">10</th>
+              <td class="Cookie_List_Name">1010</td>
+              <td class="Class_Info"></td>
+              <td> <button type="button"  class="btn btn-info ml-2 btn_GetCookie">讀 取</button></td>
+              <td> <button type="button" class="btn btn-secondary ml-2 btn_DeleteCookieCheck">刪 除</button></td>
+              <td><input type="text"  class="form-control rounded ml-2 mt-1 Cookie_Url"></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      <!-- Modal DeleteModal -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">刪除提醒</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        確定要刪除 <span id="DeleteName"></span>嗎?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button id="btn_DeleteCookie" type="button" class="btn btn-danger" data-dismiss="modal">刪除</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Modal saveCheck -->
+      <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">存檔提醒</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              已有一樣的檔名「<span id="SaveCheckName"></span>」，確定要覆蓋檔案嗎?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+              <button id="btn_SetCookieOverWrite" type="button" class="btn btn-danger" data-dismiss="modal">覆蓋</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+</div>
+
+
+<div id="RoQuestion" style="display:none">
+<div class="row">
+  <div class="col-12">
+  <div class="card mb-4">
+    <div class="card-header">錯誤回報</div>
+    <div class="card-body">
+      <p>RO資料龐大加上遊戲不斷更新的情況下，難免有所疏漏，若有資料錯誤還請協助回報。</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+  <div class="card mb-4">
+    <div class="card-header">攻速Q&A</div>
+    <div class="card-body">
+<div class="accordion" id="ASPD_Area">
+  <div class="card">
+    <div class="card-header" id="ASPD_heading1">
+      <h2 class="mb-0">
+        <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#ASPD_QA1" aria-expanded="false" aria-controls="ASPD_QA1">
+          使用致命塗毒不會加攻速？
+        </button>
+      </h2>
+    </div>
+
+    <div id="ASPD_QA1" class="collapse" aria-labelledby="ASPD_heading1" data-parent="#ASPD_Area">
+      <div class="card-body">
+        需要直接使用毒藥瓶才有+20%攻速的效果，使用技能「致命塗毒」僅傷害上增加
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header " id="ASPD_heading2">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-info" type="button" data-toggle="collapse" data-target="#ASPD_QA2" aria-expanded="false" aria-controls="ASPD_QA2">
+          角色已三轉但攻速還是只能190
+        </button>
+      </h2>
+    </div>
+    <div id="ASPD_QA2" class="collapse" aria-labelledby="ASPD_heading2" data-parent="#ASPD_Area">
+      <div class="card-body">
+        遊戲內是以角色等級100等為分界點，若您三轉後只有99等, 最高攻速依然會是190，請把等級練到100等就可以193了
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="ASPD_heading3">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-info" type="button" data-toggle="collapse" data-target="#ASPD_QA3" aria-expanded="false" aria-controls="ASPD_QA3">
+          為什麼計算機的ASPD可以超過193？
+        </button>
+      </h2>
+    </div>
+    <div id="ASPD_QA3" class="collapse" aria-labelledby="ASPD_heading3" data-parent="#ASPD_Area">
+      <div class="card-body">
+        <p>為了方便使用者針對溢出的攻速做其他分配，故沒有特別限制</p>
+        <p>但會在備註和每秒攻擊的部分做提示，讓使用者可以靈活運用計算機</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+  <div class="card mb-4">
+    <div class="card-header">技能施放速度</div>
+    <div class="card-body">
+      <p><strong>每秒可施放技能次數特別說明</strong></p>
+      <p>此功能為單純數學計算，排除掉遊戲中人物卡動作等因素，因此實際能施放的次數會因官方設定有所差異。</p>
+      <p>以詠唱時間+延遲時間與ASPD攻速做綜合計算</p>
+      <div class="accordion" id="Skill_ASPD_Area">
+  <div class="card">
+    <div class="card-header" id="Skill_ASPD_heading1">
+      <h2 class="mb-0">
+        <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#Skill_ASPD_QA1" aria-expanded="false" aria-controls="Skill_ASPD_QA1">
+          固詠%如何計算？
+        </button>
+      </h2>
+    </div>
+
+    <div id="Skill_ASPD_QA1" class="collapse" aria-labelledby="Skill_ASPD_heading1" data-parent="#Skill_ASPD_Area">
+      <div class="card-body">
+        <p>固詠％只取最大值，無法疊加</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="Skill_ASPD_heading2">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-info" type="button" data-toggle="collapse" data-target="#Skill_ASPD_QA2" aria-expanded="false" aria-controls="Skill_ASPD_QA2">
+          技能變詠％如何計算？
+        </button>
+      </h2>
+    </div>
+    <div id="Skill_ASPD_QA2" class="collapse" aria-labelledby="Skill_ASPD_heading2" data-parent="#Skill_ASPD_Area">
+      <div class="card-body">
+        <p>技能所減少的變詠無法疊加計算</p>
+      <p>因此，每個技能皆需分開填寫</p> 
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="Skill_ASPD_heading3">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-info" type="button" data-toggle="collapse" data-target="#Skill_ASPD_QA3" aria-expanded="false" aria-controls="Skill_ASPD_QA3">
+          是否可以增加新增可選技能
+        </button>
+      </h2>
+    </div>
+    <div id="Skill_ASPD_QA3" class="collapse" aria-labelledby="Skill_ASPD_heading3" data-parent="#Skill_ASPD_Area">
+      <div class="card-body">
+        <p>目前僅針對3轉/擴充職業提供快選技能</p>
+        <p>歡迎提供常用技能與詳細資料</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+  <div class="card mb-4">
+    <div class="card-header">輔助技能Q&A</div>
+    <div class="card-body">
+<div class="accordion" id="AUX_Skill_Area">
+  <div class="card">
+    <div class="card-header" id="AUX_Skill_heading1">
+      <h2 class="mb-0">
+        <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#AUX_Skill_QA1" aria-expanded="false" aria-controls="AUX_Skill_QA1">
+          為何慈悲術和純白百合花要填入主教JOB？
+        </button>
+      </h2>
+    </div>
+
+    <div id="AUX_Skill_QA1" class="collapse" aria-labelledby="AUX_Skill_heading1" data-parent="#AUX_Skill_Area">
+      <div class="card-body">
+        <p>主教JOB每10等能力再+1</p>
+        <p>例如：主教JOB60等，施放慈悲術後，STR、INT、DEX分別+16點</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="AUX_Skill_heading2">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-info" type="button" data-toggle="collapse" data-target="#AUX_Skill_QA2" aria-expanded="false" aria-controls="AUX_Skill_QA2">
+          是否能增加個別職業的輔助技能？
+        </button>
+      </h2>
+    </div>
+    <div id="AUX_Skill_QA2" class="collapse" aria-labelledby="AUX_Skill_heading2" data-parent="#AUX_Skill_Area">
+      <div class="card-body">
+        <p>輔助技能以可對全職業施放的技能為主</p>
+        <p>目前暫不提供個別職業獨用技能選項</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="AUX_Skill_heading3">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-info" type="button" data-toggle="collapse" data-target="#AUX_Skill_QA3" aria-expanded="false" aria-controls="AUX_Skill_QA3">
+          輔助技能衝突與疊加
+        </button>
+      </h2>
+    </div>
+    <div id="AUX_Skill_QA3" class="collapse" aria-labelledby="AUX_Skill_heading3" data-parent="#AUX_Skill_Area">
+      <div class="card-body">
+        <p>部分輔助技能在遊戲中無法並存，這邊僅做提示，請自行更正技能選項</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+
+<div id="RoAbout"  style="display:none">
+
+
+  <div class="row">
+    <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header">沿革</div>
+      <div class="card-body">
+       <p>2017年11月1日初版網站上線</p>
+       <p>2020年6月30日新版網站上線</p>
+       <hr>
+      <p>網頁空間提供：你蘇</p>
+      <p>網站內容討論:巴哈</p>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header">Webmaster</div>
+      <div class="card-body">
+       <p>在老查過著養老人生，目前和朋友們定居在劍村</p>
+       <p>然而這個資訊對使用網站並無任何幫助</p>
+    </div>
+  </div>
+  </div>
+  </div>
+
+</div>
+
+
+</div> 
+<footer></footer>
+<script type="text/javascript" src="js/Event.js"></script>
+</body>
+</html>
