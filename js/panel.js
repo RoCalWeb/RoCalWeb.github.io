@@ -3,7 +3,7 @@
 function Link(IDName){
 	switch(IDName){
 		case "Link_RoIndex": 
-			document.getElementById("RoIndex").style.display="flex";
+			document.getElementById("RoIndex").style.display="block";
 			document.getElementById("SaveData").style.display="none";
 			document.getElementById("RoQuestion").style.display="none";
 			document.getElementById("RoAbout").style.display="none";
