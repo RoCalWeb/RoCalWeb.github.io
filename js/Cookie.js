@@ -89,7 +89,7 @@ function SaveData(){
 
 
 function CreateURL(){
-	var UrlString="file:///D:/D槽資料/RO-WEB/新版/整合/index.html";
+	var UrlString="https://rocalweb.github.io/";
 
 	var Data=DataArray[0][0];
 	for(var i=1; i<=73;i++){Data+=","+DataArray[0][i];}
@@ -111,7 +111,7 @@ function LoadData01(){
 		Form.RoClass.options[DataArray[0][0]].selected=true; //Class
 	}catch(e){
 		alert("error LoadData01:資料讀取錯誤,將跳轉至首頁")
-		document.location.href="file:///D:/D槽資料/RO-WEB/新版/整合/index.html";
+		document.location.href="https://rocalweb.github.io/";
 	}
 	};
 }
@@ -232,7 +232,7 @@ function Debug(){
 			SkillAdditionFunction();
 	}catch(e){
 		console.log("資料讀取錯誤,將跳轉至首頁");
-		document.location.href="file:///D:/D槽資料/RO-WEB/新版/整合/index.html";
+		document.location.href="https://rocalweb.github.io/";
 	}
 	}
 }
@@ -282,7 +282,7 @@ function ListCookie(){
 	var CookieName;
 	var CookieValue;
 	var Name;
-	var UrlString="file:///D:/D槽資料/RO-WEB/新版/整合/index.html";
+	var UrlString="https://rocalweb.github.io/";
 	var ClassTr = document.getElementsByClassName("Class_tr");
 	var CookieListName = document.getElementsByClassName("Cookie_List_Name");
 	var ClassInfo = document.getElementsByClassName("Class_Info");
