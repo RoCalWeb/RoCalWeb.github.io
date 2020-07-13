@@ -28,12 +28,12 @@ JobValueArray[9]=[7,6,7,9,9,2];
 JobValueArray[10]=[4,6,7,12,8,3];
 JobValueArray[11]=[8,7,8,6,5,6];
 JobValueArray[12]=[9,9,6,7,8,1];
-JobValueArray[13]=[0,7,8,5,11,5];
-JobValueArray[14]=[7,9,6,5,8,5];
-JobValueArray[15]=[3,7,8,6,10,6];
-JobValueArray[16]=[11,9,3,5,9,3];
-JobValueArray[17]=[3,7,11,6,12,1];
-JobValueArray[18]=[7,7,7,6,7,6];
+JobValueArray[13]=[0,7,5,8,11,5];
+JobValueArray[14]=[7,9,5,6,8,5];
+JobValueArray[15]=[3,7,6,8,10,6];
+JobValueArray[16]=[11,9,5,3,9,3];
+JobValueArray[17]=[3,7,6,11,12,1];
+JobValueArray[18]=[7,7,6,7,7,6];
 JobValueArray[19]=[5,9,7,9,8,2];
 
 //自訂物件儲存於陣列
