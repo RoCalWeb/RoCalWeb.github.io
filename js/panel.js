@@ -38,3 +38,9 @@ function DisplayFunction(CheckedValue,body,header){
 		header.style.display="none";
 	}
 }
+
+
+function FunctionImg(Img,SRC){
+	Img.src=SRC;
+}
+

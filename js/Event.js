@@ -20,6 +20,12 @@ document.getElementById("collapse_switch").addEventListener("click",function() {
 document.getElementById("collapse_switch2").addEventListener("click",function() {DisplayFunction(this.checked,Body_Aspd,Header_Aspd)},false);
 document.getElementById("collapse_switch3").addEventListener("click",function() {DisplayFunction(this.checked,Body_SkillASPD,Header_SkillASPD)},false);
 document.getElementById("collapse_switch4").addEventListener("click",function() {DisplayFunction(this.checked,Body_Skill,Header_Skill)},false);
+//Img
+document.getElementById("Img_L").addEventListener("mouseenter",function() {FunctionImg(this,"img/img_about_L_2.png")},false);
+document.getElementById("Img_S_1").addEventListener("mouseenter",function() {FunctionImg(this,"img/img_about01_02.png")},false);
+document.getElementById("Img_S_2").addEventListener("mouseenter",function() {FunctionImg(this,"img/img_about02_02.png")},false);
+document.getElementById("Img_S_3").addEventListener("mouseenter",function() {FunctionImg(this,"img/img_about03_02.png")},false);
+document.getElementById("Img_S_4").addEventListener("mouseenter",function() {FunctionImg(this,"img/img_about04_02.png")},false);
 //change class
 document.getElementById("RoClass").addEventListener("change", function() {
     Renew();
