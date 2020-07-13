@@ -107,3 +107,9 @@ a.mouse{cursor: pointer;}
 .Collapse_checkbox {
 	background-image: url(../img/eye.png);
 }
+
+.img_logo{
+	cursor: pointer;
+	border: thin solid #CCC;
+	border-radius:5px;
+}
