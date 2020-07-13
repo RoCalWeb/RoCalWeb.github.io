@@ -445,11 +445,11 @@ function AspdCal(){
 	var TotalASPDNum =Math.floor(Form.Add_ASPD_Num.value)+Math.floor(document.getElementById("ASPD_Num").textContent);  //數字增加ASPD
 	var AspdPotion =Math.floor(parseFloat(Form.RoASPDPotion.options[Form.RoASPDPotion.selectedIndex].value)*100)/100;  //攻速水
 	var ASPD_potion2_value=0;
-	var  Perfume= (Form.ASPD_Potion3.checked==true)? 1:0;
+	var  Perfume= (Form.ASPD_Potion3.checked==true)? parseInt(1):parseInt(0);
 
 	//RunesStone
 	var RuneSelectList=(Form.RunesStone_checkbox.checked==true)? Form.RunesStone_Lv.disabled=false : Form.RunesStone_Lv.disabled=true;
-	var RunesStoneLv=((Form.RoJob.options[Form.RoJob.selectedIndex].value==1)&&(Form.RunesStone_checkbox.checked==true))? Form.RunesStone_Lv.value:0;
+	var RunesStoneLv=((Form.RoJob.options[Form.RoJob.selectedIndex].value==1)&&(Form.RunesStone_checkbox.checked==true))? parseInt(Form.RunesStone_Lv.value):parseInt(0);
 	//from QualityCalculate
 	var AgiTotalValue=AgiValue; 
 	var DexTotalValue=DexValue;
@@ -464,21 +464,18 @@ function AspdCal(){
 
 	}
 
-
-
-	
 	AspdStateCal=((AgiTotalValue*1120/111+DexTotalValue*11/60)<0)? -Math.sqrt(Math.abs(AgiTotalValue*1120/111+DexTotalValue*11/60)) :  Math.sqrt(Math.abs(AgiTotalValue*1120/111+DexTotalValue*11/60));
 	AspdStateBowCal=((AgiTotalValue*10+DexTotalValue*11/60)<0)? -Math.sqrt(Math.abs(AgiTotalValue*(10-1/400)+DexTotalValue*11/60)) :  Math.sqrt(Math.abs(AgiTotalValue*(10-1/400)+DexTotalValue*11/60));
 
-	var ASPD_cal_145=195-(195-(200-(200-(RightHandValue+AspdStateCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+ASPD_potion2_value)/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_145=195-(195-(200-(200-(RightHandValue+AspdStateCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
 		
-	var ASPD_cal_144=195-(195-(200-(200-(RightHandValue+AspdStateCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+ASPD_potion2_value)/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_144=195-(195-(200-(200-(RightHandValue+AspdStateCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
 	
-	var ASPD_cal_bow145=195-(195-(200-(200-(RightHandValue+AspdStateBowCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+ASPD_potion2_value)/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_bow145=195-(195-(200-(200-(RightHandValue+AspdStateBowCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
 	
-	var ASPD_cal_double=195-(195-(200-(200-(RightHandValue+(LeftHandValue-194)/4+AspdStateCal*1.04518))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+ASPD_potion2_value)/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_double=195-(195-(200-(200-(RightHandValue+(LeftHandValue-194)/4+AspdStateCal*1.04518))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
 	
-	var ASPD_cal_bow144=195-(195-(200-(200-(RightHandValue+AspdStateBowCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+ASPD_potion2_value)/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_bow144=195-(195-(200-(200-(RightHandValue+AspdStateBowCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
 	//公式判斷
 	if(LeftHandValue>0){
 		//雙武
@@ -611,7 +608,7 @@ function Spell(){
 	DelayAndCooldown=(DelaySecCal*TotalDelay)+(CooldownSecCal*CooldownPercentage);
 
 	//攻速和詠唱
-	SpellFrequencyCal=Math.floor((1/(Spell+DelayAndCooldown))*100)/100;
+	SpellFrequencyCal=Math.floor((1/(Spell+DelayAndCooldown))*1000)/1000;
 	if((Spell+DelayAndCooldown==0)||(SpellFrequencyCal>=AspdFrequency)){ //唱速比攻速快，以攻速為主
 		if(AspdFrequency>=7.14){DPS=7.14}else{DPS=AspdFrequency;}
 	}else{
@@ -620,7 +617,7 @@ function Spell(){
 		}else{
 			for(var i=1;SpellFrequencyCal<AspdFrequency;i++){ //唱速比攻速慢，以減少攻速的方式找出最適值
 				ASPD-=1;
-				AspdFrequency=Math.floor(50/(200-Math.floor(ASPD))*100)/100;
+				AspdFrequency=Math.floor(50/(200-Math.floor(ASPD))*1000)/1000;
 			}
 			DPS=AspdFrequency;
 			//alert(ASPD);
