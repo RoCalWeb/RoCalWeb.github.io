@@ -16,25 +16,25 @@ AdditionArray[0]=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 //職業加成
 var JobValueArray=new Array();
 JobValueArray[0]=["STR","AGI","VIT","INT","DEX","LUK"];
-JobValueArray[1]=[5,5,10,7,8,5];
-JobValueArray[2]=[1,7,14,7,8,3];
-JobValueArray[3]=[2,11,9,7,8,3];
-JobValueArray[4]=[9,5,6,9,5,6];
-JobValueArray[5]=[8,10,5,6,8,3];
-JobValueArray[6]=[6,6,11,7,7,3];
-JobValueArray[7]=[8,3,10,8,8,3];
-JobValueArray[8]=[4,4,12,7,9,4];
-JobValueArray[9]=[7,6,9,7,9,2];
-JobValueArray[10]=[4,6,12,7,8,3];
-JobValueArray[11]=[8,7,6,8,5,6];
-JobValueArray[12]=[9,9,7,6,8,1];
+JobValueArray[1]=[5,5,7,10,8,5];
+JobValueArray[2]=[1,7,7,14,8,3];
+JobValueArray[3]=[2,11,7,9,8,3];
+JobValueArray[4]=[9,5,9,6,5,6];
+JobValueArray[5]=[8,10,6,5,8,3];
+JobValueArray[6]=[6,6,7,11,7,3];
+JobValueArray[7]=[8,3,8,10,8,3];
+JobValueArray[8]=[4,4,7,12,9,4];
+JobValueArray[9]=[7,6,7,9,9,2];
+JobValueArray[10]=[4,6,7,12,8,3];
+JobValueArray[11]=[8,7,8,6,5,6];
+JobValueArray[12]=[9,9,6,7,8,1];
 JobValueArray[13]=[0,7,8,5,11,5];
 JobValueArray[14]=[7,9,6,5,8,5];
 JobValueArray[15]=[3,7,8,6,10,6];
 JobValueArray[16]=[11,9,3,5,9,3];
 JobValueArray[17]=[3,7,11,6,12,1];
 JobValueArray[18]=[7,7,7,6,7,6];
-JobValueArray[19]=[5,9,9,7,8,2];
+JobValueArray[19]=[5,9,7,9,8,2];
 
 //自訂物件儲存於陣列
 function RoArray(name,child){
