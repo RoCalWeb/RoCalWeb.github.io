@@ -544,15 +544,16 @@ function Spell(){
 	//Fixed
 	var FixedPercentage=(parseFloat(Form.Fixed_Percentage.value)>=parseFloat(document.getElementById("SkillFixed_Value").textContent))? 1-Math.floor(parseFloat(Form.Fixed_Percentage.value)*100)/10000: 1-Math.floor(parseFloat(document.getElementById("SkillFixed_Value").textContent)*100)/10000;
 	var FixedPercentageCal=(FixedPercentage<=0)? 0:FixedPercentage;
-	var FixedSec=Math.floor(parseFloat(Form.Fixed_Sec.value)*100)/100;
+	var FixedSec=Math.floor(parseFloat(Form.Fixed_Sec.value)*1000)/1000;
 	//Delay
 	var DelayPercentage=Math.floor(parseFloat(Form.Delay_Percentage.value)*100)/10000;
 	var DelayBragi=Math.floor(parseFloat(document.getElementById("DelaySkill_Value").textContent)*100)/10000;
 	var TotalDelay=(DelayPercentage+DelayBragi>=1)? 0:1-(DelayPercentage+DelayBragi);
-	var DelaySec=Form.Delay_Sec.value;
+	var DelaySec=Math.floor(parseFloat(Form.Delay_Sec.value)*1000)/1000;
 	//Cooldown
 	var CooldownPercentage=(Form.Cooldown_Percentage.value>100)? 0:1-Math.floor(parseFloat(Form.Cooldown_Percentage.value)*100)/10000;
-	var CooldownSec=Form.Cooldown_Sec.value;
+	var CooldownSec=Math.floor(parseFloat(Form.Cooldown_Sec.value)*1000)/1000;
+
 	//技能秒數
 	var SkillReduction=0;
 	var SkillFixed=0;
@@ -593,19 +594,18 @@ function Spell(){
 		SkillDelay=Math.floor(parseFloat(document.getElementById("Skill_Delay").textContent)*100)/100;
 		SkillCooldown=Math.floor(parseFloat(document.getElementById("Skill_Cooldown").textContent)*100)/100;
 	}else{
-		SkillReduction=Math.floor(parseFloat(Form.Custon_Reduction.value)*100)/100;
+		SkillReduction=Math.floor(parseFloat(Form.Custon_Reduction.value)*1000)/1000;
 		SkillFixed=Math.floor(parseFloat(Form.Custom_Fixed.value)*100)/100;
 		SkillDelay=Math.floor(parseFloat(Form.Custom_Delay.value)*100)/100;
 		SkillCooldown=Math.floor(parseFloat(Form.Custom_Cooldown.value)*100)/100;
 	}
-
 	ReductionSecCal=(SkillReduction-ReductionSec<=0)? 0:SkillReduction-ReductionSec;
 	FixedSecCal=(SkillFixed-FixedSec<=0)? 0:SkillFixed-FixedSec;
 	DelaySecCal=(SkillDelay-DelaySec<=0)? 0:SkillDelay-DelaySec;
 	CooldownSecCal=(SkillCooldown-CooldownSec<=0)? 0:SkillCooldown-CooldownSec;
 	//total
 	Spell=(FixedSecCal*FixedPercentageCal)+(ReductionSecCal*ReductionPercentage);
-	DelayAndCooldown=(DelaySecCal*TotalDelay)+(CooldownSecCal*CooldownPercentage);
+	DelayAndCooldown=((DelaySecCal*TotalDelay)>=(CooldownSecCal*CooldownPercentage))? DelaySecCal*TotalDelay:CooldownSecCal*CooldownPercentage;
 
 	//攻速和詠唱
 	SpellFrequencyCal=Math.floor((1/(Spell+DelayAndCooldown))*1000)/1000;
@@ -623,18 +623,18 @@ function Spell(){
 			//alert(ASPD);
 		}
 	}
-	document.getElementById("Total_Spell").textContent=Math.floor(Spell*1000)/1000;
-	document.getElementById("Delay_And_Cooldown").textContent=Math.floor(DelayAndCooldown*1000)/1000;
-	document.getElementById("DPS").textContent=DPS;
+	document.getElementById("Total_Spell").textContent=Math.round(Spell*1000)/1000;
+	document.getElementById("Delay_And_Cooldown").textContent=Math.round(DelayAndCooldown*1000)/1000;
+	document.getElementById("DPS").textContent=Math.round(DPS*1000)/1000;
 
-	document.getElementById("Header_s_Reduction").textContent=Math.floor(ReductionSecCal*ReductionPercentage*1000)/1000;
-	document.getElementById("Header_s_Fixed").textContent=Math.floor(FixedSecCal*FixedPercentageCal*1000)/1000;
-	document.getElementById("Header_s_Delay").textContent=Math.floor(DelaySecCal*TotalDelay*1000)/1000;
-	document.getElementById("Header_s_Cooldown").textContent=Math.floor(CooldownSecCal*CooldownPercentage*1000)/1000;
+	document.getElementById("Header_s_Reduction").textContent=Math.round(ReductionSecCal*ReductionPercentage*1000)/1000;
+	document.getElementById("Header_s_Fixed").textContent=Math.round(FixedSecCal*FixedPercentageCal*1000)/1000;
+	document.getElementById("Header_s_Delay").textContent=Math.round(DelaySecCal*TotalDelay*1000)/1000;
+	document.getElementById("Header_s_Cooldown").textContent=Math.round(CooldownSecCal*CooldownPercentage*1000)/1000;
 	
-	document.getElementById("Collapse_Total_Spell").textContent=Math.floor(Spell*1000)/1000;
-	document.getElementById("Collapse_Delay_And_Cooldown").textContent=Math.floor(DelayAndCooldown*1000)/1000;
-	document.getElementById("Collapse_DPS").textContent=DPS;
+	document.getElementById("Collapse_Total_Spell").textContent=Math.round(Spell*1000)/1000;
+	document.getElementById("Collapse_Delay_And_Cooldown").textContent=Math.round(DelayAndCooldown*1000)/1000;
+	document.getElementById("Collapse_DPS").textContent=Math.round(DPS*1000)/1000;
 }
 
 
