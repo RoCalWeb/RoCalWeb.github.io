@@ -445,6 +445,7 @@ function AspdCal(){
 	var TotalASPDNum =Math.floor(Form.Add_ASPD_Num.value)+Math.floor(document.getElementById("ASPD_Num").textContent);  //數字增加ASPD
 	var AspdPotion =Math.floor(parseFloat(Form.RoASPDPotion.options[Form.RoASPDPotion.selectedIndex].value)*100)/100;  //攻速水
 	var ASPD_potion2_value=0;
+	var ASPD_Potion2_juice=(Form.ASPD_Potion2_juice.checked)? parseFloat(Form.ASPD_Potion2_juice.value):0;
 	var  Perfume= (Form.ASPD_Potion3.checked==true)? parseInt(1):parseInt(0);
 
 	//RunesStone
@@ -460,22 +461,20 @@ function AspdCal(){
 	}else{
 		Form.Add_Other_ASPD.disabled=true;
 		Form.Add_Other_ASPD.value=0;
-		ASPD_potion2_value = (Form.ASPD_Potion2_juice.checked==true)? 10:0;
-
 	}
 
 	AspdStateCal=((AgiTotalValue*1120/111+DexTotalValue*11/60)<0)? -Math.sqrt(Math.abs(AgiTotalValue*1120/111+DexTotalValue*11/60)) :  Math.sqrt(Math.abs(AgiTotalValue*1120/111+DexTotalValue*11/60));
 	AspdStateBowCal=((AgiTotalValue*10+DexTotalValue*11/60)<0)? -Math.sqrt(Math.abs(AgiTotalValue*(10-1/400)+DexTotalValue*11/60)) :  Math.sqrt(Math.abs(AgiTotalValue*(10-1/400)+DexTotalValue*11/60));
 
-	var ASPD_cal_145=195-(195-(200-(200-(RightHandValue+AspdStateCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_145=195-(195-(200-(200-(RightHandValue+AspdStateCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value)+ASPD_Potion2_juice)/100))+TotalASPDNum+Perfume;
 		
-	var ASPD_cal_144=195-(195-(200-(200-(RightHandValue+AspdStateCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_144=195-(195-(200-(200-(RightHandValue+AspdStateCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))+(RunesStoneLv*0.4)))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value)+ASPD_Potion2_juice)/100))+TotalASPDNum+Perfume;
 	
-	var ASPD_cal_bow145=195-(195-(200-(200-(RightHandValue+AspdStateBowCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_bow145=195-(195-(200-(200-(RightHandValue+AspdStateBowCal*(1-(RightHandValue-144)/50)+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value)+ASPD_Potion2_juice)/100))+TotalASPDNum+Perfume;
 	
-	var ASPD_cal_double=195-(195-(200-(200-(RightHandValue+(LeftHandValue-194)/4+AspdStateCal*1.04518))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_double=195-(195-(200-(200-(RightHandValue+(LeftHandValue-194)/4+AspdStateCal*1.04518))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value)+ASPD_Potion2_juice)/100))+TotalASPDNum+Perfume;
 	
-	var ASPD_cal_bow144=195-(195-(200-(200-(RightHandValue+AspdStateBowCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value))/100))+TotalASPDNum+Perfume;
+	var ASPD_cal_bow144=195-(195-(200-(200-(RightHandValue+AspdStateBowCal+LeftHandValue))*(1-((TotalSkillASPD+AspdPotion)/100))))*(1-((TotalEquipmentASPD+parseFloat(ASPD_potion2_value)+ASPD_Potion2_juice)/100))+TotalASPDNum+Perfume;
 	//公式判斷
 	if(LeftHandValue>0){
 		//雙武
