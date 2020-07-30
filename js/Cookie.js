@@ -32,8 +32,10 @@ function SaveData(){
 	DataArray[0][20]=Form.Add_Skill_ASPD.value;
 	DataArray[0][21]=Form.Add_ASPD_Num.selectedIndex;
 	DataArray[0][22]=Form.RoASPDPotion.selectedIndex;
-	DataArray[0][23]=(Form.ASPD_Potion2[0].checked==true)? 0:1;
-	DataArray[0][24]=(Form.ASPD_Potion2[0].checked==true)? 10:Form.Add_Other_ASPD.value;
+	DataArray[0][23]=(Form.ASPD_Potion2_juice.checked==true)? 1:0;
+	DataArray[0][24]=(Form.ASPD_Potion2_other.checked==true)? Form.Add_Other_ASPD.value:0;
+	//DataArray[0][23]=(Form.ASPD_Potion2[0].checked==true)? 0:1;
+	//DataArray[0][24]=(Form.ASPD_Potion2[0].checked==true)? 10:Form.Add_Other_ASPD.value;
 	DataArray[0][25]=(Form.ASPD_Potion3.checked==true)? 1:0;
 	DataArray[0][26]=(Form.RunesStone.checked==true)? 1:0;
 	DataArray[0][27]=Form.RunesStone_Lv.selectedIndex;
@@ -139,8 +141,9 @@ function LoadData05(){
 		Form.Add_Skill_ASPD.value=DataArray[0][20];
 		Form.Add_ASPD_Num.options[DataArray[0][21]].selected=true;
 		Form.RoASPDPotion.options[DataArray[0][22]].selected=true;
-		(DataArray[0][23]==0)? Form.ASPD_Potion2[0].checked=true:Form.ASPD_Potion2[1].checked=true;
-		(Form.ASPD_Potion2[1].checked==true)? Form.Add_Other_ASPD.value=DataArray[0][24]:Form.Add_Other_ASPD.value=0;
+		(DataArray[0][23]==0)? 0:Form.ASPD_Potion2_juice.checked=true;
+		(DataArray[0][24]==0)? Form.Add_Other_ASPD.value=0:Form.Add_Other_ASPD.checked==true;
+		(DataArray[0][24]==0)? 0:Form.Add_Other_ASPD.value=DataArray[0][24];
 		(DataArray[0][25]==1)? Form.ASPD_Potion3.checked=true:Form.ASPD_Potion3.checked=false;
 		(DataArray[0][26]==1)? Form.RunesStone.checked=true:Form.RunesStone.checked=false;
 		(Form.RunesStone.checked==true)? Form.RunesStone_Lv.options[DataArray[0][27]].selected=true:0;
