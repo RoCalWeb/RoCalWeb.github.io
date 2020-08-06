@@ -163,8 +163,8 @@ function TotalArray() {
 	SpecialArray[1] = new RoArray(["未轉生","小孩",],[2,1]); //擴充
 	
 	var NoviceArray = new Array(); //職業-初心者系列
-	NoviceArray[0]= new RoJobArray("超級初心者(等級突破)",18,SpecialArray[1],185,JobValueArray[18],NoviceWeapon[0],Shield[10],ASPDPotion[0],SkillArray[18]);
-	NoviceArray[1]= new RoJobArray("超級初心者",43,SpecialArray[1],99,0,NoviceWeapon[0],Shield[10],ASPDPotion[0],SkillArray[0]);
+	NoviceArray[0]= new RoJobArray("超級初心者(等級突破)",18,SpecialArray[1],185,JobValueArray[18],NoviceWeapon[0],Shield[10],ASPDPotion[1],SkillArray[18]);
+	NoviceArray[1]= new RoJobArray("超級初心者",43,SpecialArray[1],99,0,NoviceWeapon[0],Shield[10],ASPDPotion[1],SkillArray[0]);
 	NoviceArray[2]= new RoJobArray("初心者",37,SpecialArray[0],99,0,NoviceWeapon[0],Shield[10],ASPDPotion[0],SkillArray[0]);
 	
 	var SwordmanArray = new Array();
@@ -205,7 +205,7 @@ function TotalArray() {
 	
 	var AcolyteArray = new Array();
 	AcolyteArray[0]= new RoJobArray("大主教",6,SpecialArray[0],185,JobValueArray[6],AcolyteWeapon[3],Shield[5],ASPDPotion[0],SkillArray[6]);
-	AcolyteArray[1]= new RoJobArray("修羅",12,SpecialArray[0],185,JobValueArray[12],AcolyteWeapon[4],Shield[5],ASPDPotion[0],SkillArray[12]);
+	AcolyteArray[1]= new RoJobArray("修羅",12,SpecialArray[0],185,JobValueArray[12],AcolyteWeapon[4],Shield[5],ASPDPotion[1],SkillArray[12]);
 	AcolyteArray[2]= new RoJobArray("祭司/神官",30,SpecialArray[0],99,0,AcolyteWeapon[1],Shield[5],ASPDPotion[0],SkillArray[0]);
 	AcolyteArray[3]= new RoJobArray("武僧/武宗術師",36,SpecialArray[0],99,0,AcolyteWeapon[2],Shield[5],ASPDPotion[0],SkillArray[0]);
 	AcolyteArray[4]= new RoJobArray("服事",24,SpecialArray[0],99,0,AcolyteWeapon[0],Shield[7],ASPDPotion[0],SkillArray[0]);
