@@ -269,6 +269,8 @@ function SkillAdditionFunction(){
 	for(var i=0;i<=14;i++){
 	AdditionArray[0][i]=Math.floor(SkillAdditionValueArray1[i])+Math.floor(SkillAdditionValueArray2[i])+Math.floor(SkillAdditionValueArray3[i])+Math.floor(SkillAdditionValueArray4[i])+Math.floor(SkillAdditionValueArray5[i])+Math.floor(SkillAdditionValueArray6[i])+Math.floor(SkillAdditionValueArray7[i])+Math.floor(SkillAdditionValueArray8[i])+Math.floor(SkillAdditionValueArray9[i])+Math.floor(SkillAdditionValueArray10[i])+Math.floor(SkillAdditionValueArray11[i])+Math.floor(SkillAdditionValueArray12[i])+Math.floor(SkillAdditionValueArray13[i])+Math.floor(SkillAdditionValueArray14[i]);
 }
+	//追加判斷搖擺舞和聖典的減少固詠
+	AdditionArray[0][9]=(SkillAdditionValueArray5[9]>=SkillAdditionValueArray10[9])? SkillAdditionValueArray5[9]:SkillAdditionValueArray10[9];
 
 
 	if(Form.JobMax.checked==true){
@@ -289,7 +291,8 @@ function SkillAdditionFunction(){
 	document.getElementById("Add_HIT").textContent=AdditionArray[0][6];
 	document.getElementById("Equipment_ASPD").textContent=AdditionArray[0][7];
 	document.getElementById("Skill_ASPD").textContent=AdditionArray[0][8];
-	document.getElementById("SkillFixed_Value").textContent=AdditionArray[0][9];
+	document.getElementById("SkillFixed_Value").textContent=SkillAdditionValueArray5[9];
+	document.getElementById("SkillFixed_Value2").textContent=SkillAdditionValueArray10[9];
 	document.getElementById("DelaySkill_Value").textContent=AdditionArray[0][10];
 	document.getElementById("SkillReduction_Value_1").textContent=AdditionArray[0][11];
 	document.getElementById("SkillReduction_Value_2").textContent=AdditionArray[0][12];
@@ -299,6 +302,7 @@ function SkillAdditionFunction(){
 	document.getElementById("SkillReduction_Name_2").textContent="犧牲祈福-";
 	document.getElementById("SkillReduction_Name_3").textContent="精靈靈魂-";
 	document.getElementById("SkillFixed_Name").textContent="聖典-";
+	document.getElementById("SkillFixed_Name2").textContent="搖擺舞-";
 	document.getElementById("DelaySkill_Name").textContent="布萊奇之詩-";
 	
 	QualityCalculate()
@@ -541,7 +545,8 @@ function Spell(){
 	var ReductionSkill5=(1-Math.floor(parseFloat(document.getElementById("SkillReduction_Value_1").textContent)*100)/10000)*(1-Math.floor(parseFloat(document.getElementById("SkillReduction_Value_2").textContent)*100)/10000)*(1-Math.floor(parseFloat(document.getElementById("SkillReduction_Value_3").textContent)*100)/10000);
 	var ReductionPercentage=0;
 	//Fixed
-	var FixedPercentage=(parseFloat(Form.Fixed_Percentage.value)>=parseFloat(document.getElementById("SkillFixed_Value").textContent))? 1-Math.floor(parseFloat(Form.Fixed_Percentage.value)*100)/10000: 1-Math.floor(parseFloat(document.getElementById("SkillFixed_Value").textContent)*100)/10000;
+	var SkillFixedPercentage=(parseFloat(document.getElementById("SkillFixed_Value").textContent)>=parseFloat(document.getElementById("SkillFixed_Value2").textContent))? parseFloat(document.getElementById("SkillFixed_Value").textContent):parseFloat(document.getElementById("SkillFixed_Value2").textContent);
+	var FixedPercentage=(parseFloat(Form.Fixed_Percentage.value)>=SkillFixedPercentage)? 1-Math.floor(parseFloat(Form.Fixed_Percentage.value)*100)/10000: 1-Math.floor(parseFloat(SkillFixedPercentage)*100)/10000;
 	var FixedPercentageCal=(FixedPercentage<=0)? 0:FixedPercentage;
 	var FixedSec=Math.floor(parseFloat(Form.Fixed_Sec.value)*1000)/1000;
 	//Delay
