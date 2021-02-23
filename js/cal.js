@@ -117,9 +117,9 @@ function EnableState(){
 	
 	//喵族Job文字
 	if(JobValue==13){
-		document.getElementById("Job_Max_Lv").textContent="JobLV 55";
+		document.getElementById("Job_Max_Lv").textContent="JobLV 60";
 	}else{
-		document.getElementById("Job_Max_Lv").textContent="JobLV 65";
+		document.getElementById("Job_Max_Lv").textContent="JobLV 70";
 	}
 }
 
@@ -173,14 +173,14 @@ function OtherList(){
 function SkillList(){
 	var Crementia = new Array;
 	var Cantocandidus = new Array;
-	for(var i=0;i<65;i++){
+	for(var i=0;i<70;i++){
 		Crementia=[(10+Math.floor((i+1)/10)),0,0,10+Math.floor((i+1)/10),10+Math.floor((i+1)/10),0,20+Math.floor((i+1)/10),0,0,0,0,0,0,0,0];
 		Cantocandidus=[0,12+Math.floor((i+1)/10),0,0,0,0,0,10+Math.floor((i+1)/10),0,0,0,0,0,0,0];
 		Form.b1.options[i]=new Option(i+1,Crementia);
 		Form.b2.options[i]=new Option(i+1,Cantocandidus);
 	}
-	Form.b1.options[64].selected=true;
-	Form.b2.options[64].selected=true;
+	Form.b1.options[69].selected=true;
+	Form.b2.options[69].selected=true;
 }
 
 //輔助技能 on/off button

@@ -3,7 +3,7 @@
 
 var Array_LVPoint=new Array();
 //升等點數
-Array_LVPoint[0]=[100, 103, 106, 109, 112, 116, 120, 124, 128, 132, 137, 142, 147, 152, 157, 163, 169, 175, 181, 187, 194, 201, 208, 215, 222, 230, 238, 246, 254, 262, 271, 280, 289, 298, 307, 317, 327, 337, 347, 357, 368, 379, 390, 401, 412, 424, 436, 448, 460, 472, 485, 498, 511, 524, 537, 551, 565, 579, 593, 607, 622, 637, 652, 667, 682, 698, 714, 730, 746, 762, 779, 796, 813, 830, 847, 865, 883, 901, 919, 937, 956, 975, 994, 1013, 1032, 1052, 1072, 1092, 1112, 1132, 1153, 1174, 1195, 1216, 1237, 1259, 1281, 1303, 1325, 1347, 1370, 1393, 1416, 1439, 1462, 1485 ,1508, 1531, 1554, 1577, 1601, 1625, 1649, 1673, 1697, 1721, 1745, 1769, 1793, 1817, 1842, 1867, 1892, 1917, 1942, 1967, 1992, 2017, 2042, 2067, 2093, 2119, 2145, 2171, 2197, 2223, 2249, 2275, 2301, 2327, 2354, 2381, 2408, 2435, 2462, 2489, 2516, 2543, 2570, 2597, 2625, 2653, 2681, 2709, 2737, 2765, 2793, 2822, 2851, 2880, 2909, 2938, 2967, 2996, 3026, 3056, 3086, 3116, 3146, 3176, 3206, 3237, 3268, 3299, 3330,3361,3392,3423,3455,3487,3519,3551,3583,3615,3647];
+Array_LVPoint[0]=[100, 103, 106, 109, 112, 116, 120, 124, 128, 132, 137, 142, 147, 152, 157, 163, 169, 175, 181, 187, 194, 201, 208, 215, 222, 230, 238, 246, 254, 262, 271, 280, 289, 298, 307, 317, 327, 337, 347, 357, 368, 379, 390, 401, 412, 424, 436, 448, 460, 472, 485, 498, 511, 524, 537, 551, 565, 579, 593, 607, 622, 637, 652, 667, 682, 698, 714, 730, 746, 762, 779, 796, 813, 830, 847, 865, 883, 901, 919, 937, 956, 975, 994, 1013, 1032, 1052, 1072, 1092, 1112, 1132, 1153, 1174, 1195, 1216, 1237, 1259, 1281, 1303, 1325, 1347, 1370, 1393, 1416, 1439, 1462, 1485 ,1508, 1531, 1554, 1577, 1601, 1625, 1649, 1673, 1697, 1721, 1745, 1769, 1793, 1817, 1842, 1867, 1892, 1917, 1942, 1967, 1992, 2017, 2042, 2067, 2093, 2119, 2145, 2171, 2197, 2223, 2249, 2275, 2301, 2327, 2354, 2381, 2408, 2435, 2462, 2489, 2516, 2543, 2570, 2597, 2625, 2653, 2681, 2709, 2737, 2765, 2793, 2822, 2851, 2880, 2909, 2938, 2967, 2996, 3026, 3056, 3086, 3116, 3146, 3176, 3206, 3237, 3268, 3299, 3330,3361,3392,3423,3455,3487,3519,3551,3583,3615,3647,3680,3713,3746,3779,3812,3845,3878,3912,3946,3980,4014,4048,4082,4116,4151];
 
 var Array_Quality=new Array();
 Array_Quality[0]=[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 54, 58, 62, 66, 70, 74, 78, 82, 86, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 146, 152, 158, 164, 170, 176, 182, 188, 194, 200, 207, 214, 221, 228, 235, 242, 249, 256, 263, 270, 278, 286, 294, 302, 310, 318, 326, 334, 342, 350, 359, 368, 377, 386, 395, 404, 413, 422, 431, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 551, 562, 573, 584, 595, 606, 617, 628, 639, 655, 671, 687, 703, 719, 739, 759, 779, 799, 819, 843, 867, 891, 915, 939, 967, 995, 1023, 1051, 1079, 1111, 1143, 1175, 1207, 1239, 1275, 1311, 1347, 1383, 1419];
@@ -16,25 +16,26 @@ AdditionArray[0]=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 //職業加成
 var JobValueArray=new Array();
 JobValueArray[0]=["STR","AGI","VIT","INT","DEX","LUK"];
-JobValueArray[1]=[5,5,7,10,8,5];
-JobValueArray[2]=[1,7,7,14,8,3];
-JobValueArray[3]=[2,11,7,9,8,3];
-JobValueArray[4]=[9,5,9,6,5,6];
-JobValueArray[5]=[8,10,6,5,8,3];
-JobValueArray[6]=[6,6,7,11,7,3];
-JobValueArray[7]=[8,3,8,10,8,3];
-JobValueArray[8]=[4,4,7,12,9,4];
-JobValueArray[9]=[7,6,7,9,9,2];
-JobValueArray[10]=[4,6,7,12,8,3];
-JobValueArray[11]=[8,7,8,6,5,6];
-JobValueArray[12]=[9,9,6,7,8,1];
-JobValueArray[13]=[0,7,5,8,11,5];
-JobValueArray[14]=[7,9,5,6,8,5];
-JobValueArray[15]=[3,7,6,8,10,6];
-JobValueArray[16]=[11,9,5,3,9,3];
-JobValueArray[17]=[3,7,6,11,12,1];
-JobValueArray[18]=[7,7,6,7,7,6];
-JobValueArray[19]=[5,9,7,9,8,2];
+JobValueArray[1]=[6,6,7,10,9,5];
+JobValueArray[2]=[1,7,8,15,8,4];
+JobValueArray[3]=[2,12,8,9,8,4];
+JobValueArray[4]=[10,6,10,6,5,6];
+JobValueArray[5]=[8,11,6,5,9,4];
+JobValueArray[6]=[6,7,7,12,7,4];
+JobValueArray[7]=[9,3,9,10,9,3];
+JobValueArray[8]=[4,4,8,13,9,5];
+JobValueArray[9]=[7,7,7,9,10,3];
+JobValueArray[10]=[5,6,8,12,8,4];
+JobValueArray[11]=[8,9,8,6,6,6];
+JobValueArray[12]=[10,10,6,8,8,1];
+JobValueArray[13]=[0,7,5,9,12,5];
+JobValueArray[14]=[7,10,6,6,9,5];   //日影
+JobValueArray[15]=[3,8,6,8,11,7];
+JobValueArray[16]=[12,10,6,3,9,3];
+JobValueArray[17]=[3,7,7,11,13,2];
+JobValueArray[18]=[8,8,6,8,8,6];
+JobValueArray[19]=[7,9,7,9,8,3];   //浪跡
+JobValueArray[20]=[7,10,6,6,8,6];   //月影
 
 //自訂物件儲存於陣列
 function RoArray(name,child){
@@ -163,59 +164,59 @@ function TotalArray() {
 	SpecialArray[1] = new RoArray(["未轉生","小孩",],[2,1]); //擴充
 	
 	var NoviceArray = new Array(); //職業-初心者系列
-	NoviceArray[0]= new RoJobArray("超級初心者(等級突破)",18,SpecialArray[1],185,JobValueArray[18],NoviceWeapon[0],Shield[10],ASPDPotion[1],SkillArray[18]);
+	NoviceArray[0]= new RoJobArray("超級初心者(等級突破)",18,SpecialArray[1],200,JobValueArray[18],NoviceWeapon[0],Shield[10],ASPDPotion[1],SkillArray[18]);
 	NoviceArray[1]= new RoJobArray("超級初心者",43,SpecialArray[1],99,0,NoviceWeapon[0],Shield[10],ASPDPotion[1],SkillArray[0]);
 	NoviceArray[2]= new RoJobArray("初心者",37,SpecialArray[0],99,0,NoviceWeapon[0],Shield[10],ASPDPotion[0],SkillArray[0]);
 	
 	var SwordmanArray = new Array();
-	SwordmanArray[0]= new RoJobArray("盧恩騎士",1,SpecialArray[0],185,JobValueArray[1],SwordmanWeapon[3],Shield[5],ASPDPotion[2],SkillArray[1]);
-	SwordmanArray[1]= new RoJobArray("皇家禁衛軍",7,SpecialArray[0],185,JobValueArray[7],SwordmanWeapon[4],Shield[5],ASPDPotion[2],SkillArray[7]);
+	SwordmanArray[0]= new RoJobArray("盧恩騎士",1,SpecialArray[0],200,JobValueArray[1],SwordmanWeapon[3],Shield[5],ASPDPotion[2],SkillArray[1]);
+	SwordmanArray[1]= new RoJobArray("皇家禁衛軍",7,SpecialArray[0],200,JobValueArray[7],SwordmanWeapon[4],Shield[5],ASPDPotion[2],SkillArray[7]);
 	SwordmanArray[2]= new RoJobArray("騎士/騎士領主",25,SpecialArray[0],99,0,SwordmanWeapon[1],Shield[5],ASPDPotion[2],SkillArray[0]);
 	SwordmanArray[3]= new RoJobArray("十字軍/聖殿十字軍",31,SpecialArray[0],99,0,SwordmanWeapon[2],Shield[5],ASPDPotion[2],SkillArray[0]);
 	SwordmanArray[4]= new RoJobArray("劍士",19,SpecialArray[0],99,0,SwordmanWeapon[0],Shield[5],ASPDPotion[2],SkillArray[0]);
 	
 	var MageArray = new Array();
-	MageArray[0]= new RoJobArray("咒術士",2,SpecialArray[0],185,JobValueArray[2],MageWeapon[3],Shield[5],ASPDPotion[2],SkillArray[2]);
-	MageArray[1]= new RoJobArray("妖術師",8,SpecialArray[0],185,JobValueArray[8],MageWeapon[4],Shield[5],ASPDPotion[1],SkillArray[8]);
+	MageArray[0]= new RoJobArray("咒術士",2,SpecialArray[0],200,JobValueArray[2],MageWeapon[3],Shield[5],ASPDPotion[2],SkillArray[2]);
+	MageArray[1]= new RoJobArray("妖術師",8,SpecialArray[0],200,JobValueArray[8],MageWeapon[4],Shield[5],ASPDPotion[1],SkillArray[8]);
 	MageArray[2]= new RoJobArray("巫師/超魔導",26,SpecialArray[0],99,0,MageWeapon[1],Shield[8],ASPDPotion[2],SkillArray[0]);
 	MageArray[3]= new RoJobArray("賢者/智者",32,SpecialArray[0],99,0,MageWeapon[2],Shield[5],ASPDPotion[1],SkillArray[0]);
 	MageArray[4]= new RoJobArray("法師",20,SpecialArray[0],99,0,MageWeapon[0],Shield[10],ASPDPotion[2],SkillArray[0]);
 	
 	var ArcherArray = new Array();
-	ArcherArray[0]= new RoJobArray("遊俠",3,SpecialArray[0],185,JobValueArray[3],ArcherWeapon[3],Shield[8],ASPDPotion[1],SkillArray[3]);
-	ArcherArray[1]= new RoJobArray("宮廷樂師",9,SpecialArray[0],185,JobValueArray[9],ArcherWeapon[4],Shield[7],ASPDPotion[0],SkillArray[9]);
-	ArcherArray[2]= new RoJobArray("浪跡舞者",9,SpecialArray[0],185,JobValueArray[19],ArcherWeapon[5],Shield[7],ASPDPotion[0],SkillArray[9]);
+	ArcherArray[0]= new RoJobArray("遊俠",3,SpecialArray[0],200,JobValueArray[3],ArcherWeapon[3],Shield[8],ASPDPotion[1],SkillArray[3]);
+	ArcherArray[1]= new RoJobArray("宮廷樂師",9,SpecialArray[0],200,JobValueArray[9],ArcherWeapon[4],Shield[7],ASPDPotion[0],SkillArray[9]);
+	ArcherArray[2]= new RoJobArray("浪跡舞者",9,SpecialArray[0],200,JobValueArray[19],ArcherWeapon[5],Shield[7],ASPDPotion[0],SkillArray[9]);
 	ArcherArray[3]= new RoJobArray("獵人/神射手",27,SpecialArray[0],99,0,ArcherWeapon[1],Shield[9],ASPDPotion[1],SkillArray[0]);
 	ArcherArray[4]= new RoJobArray("詩人/舞孃",33,SpecialArray[0],99,0,ArcherWeapon[2],Shield[7],ASPDPotion[0],SkillArray[0]);
 	ArcherArray[5]= new RoJobArray("弓箭手",21,SpecialArray[0],99,0,ArcherWeapon[0],Shield[9],ASPDPotion[1],SkillArray[0]);
 	
 	var MerchantArray = new Array();
-	MerchantArray[0]= new RoJobArray("機械工匠",4,SpecialArray[0],185,JobValueArray[4],MerchantWeapon[3],Shield[6],ASPDPotion[2],SkillArray[4]);
-	MerchantArray[1]= new RoJobArray("基因學者",10,SpecialArray[0],185,JobValueArray[10],MerchantWeapon[4],Shield[4],ASPDPotion[2],SkillArray[10]);
+	MerchantArray[0]= new RoJobArray("機械工匠",4,SpecialArray[0],200,JobValueArray[4],MerchantWeapon[3],Shield[6],ASPDPotion[2],SkillArray[4]);
+	MerchantArray[1]= new RoJobArray("基因學者",10,SpecialArray[0],200,JobValueArray[10],MerchantWeapon[4],Shield[4],ASPDPotion[2],SkillArray[10]);
 	MerchantArray[2]= new RoJobArray("鐵匠/神工匠",28,SpecialArray[0],99,0,MerchantWeapon[1],Shield[5],ASPDPotion[2],SkillArray[0]);
 	MerchantArray[3]= new RoJobArray("煉金術師/創造者",34,SpecialArray[0],99,0,MerchantWeapon[2],Shield[4],ASPDPotion[2],SkillArray[0]);
 	MerchantArray[4]= new RoJobArray("商人",22,SpecialArray[0],99,0,MerchantWeapon[0],Shield[5],ASPDPotion[2],SkillArray[0]);
 	
 	var ThiefArray = new Array();
-	ThiefArray[0]= new RoJobArray("十字斬首者",5,SpecialArray[0],185,JobValueArray[5],ThiefWeapon[3],Shield[12],ASPDPotion[3],SkillArray[5]);
-	ThiefArray[1]= new RoJobArray("魅影追蹤者",11,SpecialArray[0],185,JobValueArray[11],ThiefWeapon[4],Shield[4],ASPDPotion[2],SkillArray[11]);
+	ThiefArray[0]= new RoJobArray("十字斬首者",5,SpecialArray[0],200,JobValueArray[5],ThiefWeapon[3],Shield[12],ASPDPotion[3],SkillArray[5]);
+	ThiefArray[1]= new RoJobArray("魅影追蹤者",11,SpecialArray[0],200,JobValueArray[11],ThiefWeapon[4],Shield[4],ASPDPotion[2],SkillArray[11]);
 	ThiefArray[2]= new RoJobArray("刺客/十字刺客",29,SpecialArray[0],99,0,ThiefWeapon[1],Shield[11],ASPDPotion[3],SkillArray[0]);
 	ThiefArray[3]= new RoJobArray("流氓/神行太保",35,SpecialArray[0],99,0,ThiefWeapon[2],Shield[5],ASPDPotion[2],SkillArray[0]);
 	ThiefArray[4]= new RoJobArray("盜賊",23,SpecialArray[0],99,0,ThiefWeapon[0],Shield[6],ASPDPotion[1],SkillArray[0]);
 	
 	var AcolyteArray = new Array();
-	AcolyteArray[0]= new RoJobArray("大主教",6,SpecialArray[0],185,JobValueArray[6],AcolyteWeapon[3],Shield[5],ASPDPotion[0],SkillArray[6]);
-	AcolyteArray[1]= new RoJobArray("修羅",12,SpecialArray[0],185,JobValueArray[12],AcolyteWeapon[4],Shield[5],ASPDPotion[1],SkillArray[12]);
+	AcolyteArray[0]= new RoJobArray("大主教",6,SpecialArray[0],200,JobValueArray[6],AcolyteWeapon[3],Shield[5],ASPDPotion[0],SkillArray[6]);
+	AcolyteArray[1]= new RoJobArray("修羅",12,SpecialArray[0],200,JobValueArray[12],AcolyteWeapon[4],Shield[5],ASPDPotion[1],SkillArray[12]);
 	AcolyteArray[2]= new RoJobArray("祭司/神官",30,SpecialArray[0],99,0,AcolyteWeapon[1],Shield[5],ASPDPotion[0],SkillArray[0]);
 	AcolyteArray[3]= new RoJobArray("武僧/武宗術師",36,SpecialArray[0],99,0,AcolyteWeapon[2],Shield[5],ASPDPotion[0],SkillArray[0]);
 	AcolyteArray[4]= new RoJobArray("服事",24,SpecialArray[0],99,0,AcolyteWeapon[0],Shield[7],ASPDPotion[0],SkillArray[0]);
 	
 	var ExpandedClassesArray = new Array();
-	ExpandedClassesArray[0]= new RoJobArray("召喚師(喵~)",13,SpecialArray[1],185,JobValueArray[13],ExpandedClassesWeapon[0],Shield[7],ASPDPotion[1],SkillArray[13]);
-	ExpandedClassesArray[1]= new RoJobArray("朧/影狼",14,SpecialArray[1],185,JobValueArray[14],ExpandedClassesWeapon[1],Shield[13],ASPDPotion[1],SkillArray[14]);
-	ExpandedClassesArray[2]= new RoJobArray("叛亂者",15,SpecialArray[1],185,JobValueArray[15],ExpandedClassesWeapon[2],Shield[10],ASPDPotion[2],SkillArray[15]);
-	ExpandedClassesArray[3]= new RoJobArray("拳皇",16,SpecialArray[1],185,JobValueArray[16],ExpandedClassesWeapon[3],Shield[3],ASPDPotion[2],SkillArray[16]);
-	ExpandedClassesArray[4]= new RoJobArray("獵靈士",17,SpecialArray[1],185,JobValueArray[17],ExpandedClassesWeapon[4],Shield[5],ASPDPotion[2],SkillArray[17]);
+	ExpandedClassesArray[0]= new RoJobArray("召喚師(喵~)",13,SpecialArray[1],200,JobValueArray[13],ExpandedClassesWeapon[0],Shield[7],ASPDPotion[1],SkillArray[13]);
+	ExpandedClassesArray[1]= new RoJobArray("朧/影狼",14,SpecialArray[1],200,JobValueArray[14],ExpandedClassesWeapon[1],Shield[13],ASPDPotion[1],SkillArray[14]);
+	ExpandedClassesArray[2]= new RoJobArray("叛亂者",15,SpecialArray[1],200,JobValueArray[15],ExpandedClassesWeapon[2],Shield[10],ASPDPotion[2],SkillArray[15]);
+	ExpandedClassesArray[3]= new RoJobArray("拳皇",16,SpecialArray[1],200,JobValueArray[16],ExpandedClassesWeapon[3],Shield[3],ASPDPotion[2],SkillArray[16]);
+	ExpandedClassesArray[4]= new RoJobArray("獵靈士",17,SpecialArray[1],200,JobValueArray[17],ExpandedClassesWeapon[4],Shield[5],ASPDPotion[2],SkillArray[17]);
 	ExpandedClassesArray[5]= new RoJobArray("拳聖",42,SpecialArray[1],99,0,ExpandedClassesWeapon[5],Shield[6],ASPDPotion[2],SkillArray[0]);
 	ExpandedClassesArray[6]= new RoJobArray("悟靈士",38,SpecialArray[1],99,0,ExpandedClassesWeapon[6],Shield[6],ASPDPotion[2],SkillArray[0]);
 	ExpandedClassesArray[7]= new RoJobArray("忍者",39,SpecialArray[1],99,0,ExpandedClassesWeapon[7],Shield[6],ASPDPotion[1],SkillArray[0]);
