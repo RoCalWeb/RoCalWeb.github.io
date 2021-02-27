@@ -213,15 +213,16 @@ function TotalArray() {
 	
 	var ExpandedClassesArray = new Array();
 	ExpandedClassesArray[0]= new RoJobArray("召喚師(喵~)",13,SpecialArray[1],200,JobValueArray[13],ExpandedClassesWeapon[0],Shield[7],ASPDPotion[1],SkillArray[13]);
-	ExpandedClassesArray[1]= new RoJobArray("朧/影狼",14,SpecialArray[1],200,JobValueArray[14],ExpandedClassesWeapon[1],Shield[13],ASPDPotion[1],SkillArray[14]);
-	ExpandedClassesArray[2]= new RoJobArray("叛亂者",15,SpecialArray[1],200,JobValueArray[15],ExpandedClassesWeapon[2],Shield[10],ASPDPotion[2],SkillArray[15]);
-	ExpandedClassesArray[3]= new RoJobArray("拳皇",16,SpecialArray[1],200,JobValueArray[16],ExpandedClassesWeapon[3],Shield[3],ASPDPotion[2],SkillArray[16]);
-	ExpandedClassesArray[4]= new RoJobArray("獵靈士",17,SpecialArray[1],200,JobValueArray[17],ExpandedClassesWeapon[4],Shield[5],ASPDPotion[2],SkillArray[17]);
-	ExpandedClassesArray[5]= new RoJobArray("拳聖",42,SpecialArray[1],99,0,ExpandedClassesWeapon[5],Shield[6],ASPDPotion[2],SkillArray[0]);
-	ExpandedClassesArray[6]= new RoJobArray("悟靈士",38,SpecialArray[1],99,0,ExpandedClassesWeapon[6],Shield[6],ASPDPotion[2],SkillArray[0]);
-	ExpandedClassesArray[7]= new RoJobArray("忍者",39,SpecialArray[1],99,0,ExpandedClassesWeapon[7],Shield[6],ASPDPotion[1],SkillArray[0]);
-	ExpandedClassesArray[8]= new RoJobArray("神槍手",40,SpecialArray[1],99,0,ExpandedClassesWeapon[8],Shield[10],ASPDPotion[2],SkillArray[0]);
-	ExpandedClassesArray[9]= new RoJobArray("跆拳家",41,SpecialArray[1],99,0,ExpandedClassesWeapon[9],Shield[6],ASPDPotion[2],SkillArray[0]);
+	ExpandedClassesArray[1]= new RoJobArray("影狼(日影)",14,SpecialArray[1],200,JobValueArray[14],ExpandedClassesWeapon[1],Shield[13],ASPDPotion[1],SkillArray[14]);
+	ExpandedClassesArray[2]= new RoJobArray("朧(月影)",14,SpecialArray[1],200,JobValueArray[20],ExpandedClassesWeapon[1],Shield[13],ASPDPotion[1],SkillArray[14]);
+	ExpandedClassesArray[3]= new RoJobArray("叛亂者",15,SpecialArray[1],200,JobValueArray[15],ExpandedClassesWeapon[2],Shield[10],ASPDPotion[2],SkillArray[15]);
+	ExpandedClassesArray[4]= new RoJobArray("拳皇",16,SpecialArray[1],200,JobValueArray[16],ExpandedClassesWeapon[3],Shield[3],ASPDPotion[2],SkillArray[16]);
+	ExpandedClassesArray[5]= new RoJobArray("獵靈士",17,SpecialArray[1],200,JobValueArray[17],ExpandedClassesWeapon[4],Shield[5],ASPDPotion[2],SkillArray[17]);
+	ExpandedClassesArray[6]= new RoJobArray("拳聖",42,SpecialArray[1],99,0,ExpandedClassesWeapon[5],Shield[6],ASPDPotion[2],SkillArray[0]);
+	ExpandedClassesArray[7]= new RoJobArray("悟靈士",38,SpecialArray[1],99,0,ExpandedClassesWeapon[6],Shield[6],ASPDPotion[2],SkillArray[0]);
+	ExpandedClassesArray[8]= new RoJobArray("忍者",39,SpecialArray[1],99,0,ExpandedClassesWeapon[7],Shield[6],ASPDPotion[1],SkillArray[0]);
+	ExpandedClassesArray[9]= new RoJobArray("神槍手",40,SpecialArray[1],99,0,ExpandedClassesWeapon[8],Shield[10],ASPDPotion[2],SkillArray[0]);
+	ExpandedClassesArray[10]= new RoJobArray("跆拳家",41,SpecialArray[1],99,0,ExpandedClassesWeapon[9],Shield[6],ASPDPotion[2],SkillArray[0]);
 	
 	var ClassArray = new Array(); //分類
 	ClassArray[0]= new RoArray("劍士",SwordmanArray);
