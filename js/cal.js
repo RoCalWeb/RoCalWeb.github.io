@@ -221,11 +221,11 @@ function SkillAdditionFunction(){
 	var JobValue=Form.RoJob[JobIndex].value;
 	var AgiIndex=Form.Quality_AGI.selectedIndex;
 	var DexIndex=Form.Quality_DEX.selectedIndex;
-	var AgiBase=Math.floor(Form.Quality_AGI.options[AgiIndex].text);
-	var DexBase=Math.floor(Form.Quality_DEX.options[DexIndex].text);
+	var Agi=Math.floor(Form.Quality_AGI.options[AgiIndex].text)+Math.floor(Form.Add_AGI.options[AgiIndex].value);
+	var Dex=Math.floor(Form.Quality_DEX.options[DexIndex].text)+Math.floor(Form.Add_AGI.options[AgiIndex].value);
 	var Concentrate =(Form.b7.disabled===true)? 0:parseFloat(Form.b7.options[Form.b7.selectedIndex].text)+2; //心神凝聚
-	var ConcentrateAgi=Math.floor(Concentrate*AgiBase/100);
-	var ConcentrateDex=Math.floor(Concentrate*DexBase/100);
+	var ConcentrateAgi=Math.floor(Concentrate*Agi/100);
+	var ConcentrateDex=Math.floor(Concentrate*Dex/100);
 	//判斷技能on/off才有值, 並轉成陣列
 	var SkillAdditionValueArray1=(Form.a1.checked===true)? Form.b1.options[Form.b1.selectedIndex].value.split(','):NoneArray;
 	var SkillAdditionValueArray2=(Form.a2.checked===true)? Form.b2.options[Form.b2.selectedIndex].value.split(','):NoneArray;
