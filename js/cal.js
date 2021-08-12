@@ -221,8 +221,9 @@ function SkillAdditionFunction(){
 	var JobValue=Form.RoJob[JobIndex].value;
 	var AgiIndex=Form.Quality_AGI.selectedIndex;
 	var DexIndex=Form.Quality_DEX.selectedIndex;
-	var Agi=Math.floor(Form.Quality_AGI.options[AgiIndex].text)+Math.floor(Form.Add_AGI.options[AgiIndex].value);
-	var Dex=Math.floor(Form.Quality_DEX.options[DexIndex].text)+Math.floor(Form.Add_AGI.options[AgiIndex].value);
+	var Agi=Math.floor(Form.Quality_AGI.options[AgiIndex].text)+Math.floor(Form.Add_AGI.value);
+	var Dex=Math.floor(Form.Quality_DEX.options[DexIndex].text)+Math.floor(Form.Add_DEX.value);
+	alert(Form.Add_AGI.value);
 	var Concentrate =(Form.b7.disabled===true)? 0:parseFloat(Form.b7.options[Form.b7.selectedIndex].text)+2; //心神凝聚
 	var ConcentrateAgi=Math.floor(Concentrate*Agi/100);
 	var ConcentrateDex=Math.floor(Concentrate*Dex/100);
